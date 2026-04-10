@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Proyek Terbaru</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        dark: '#0f172a',
+                        darker: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Reveal Animation Styles */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth color transition for dark mode */
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-dark text-gray-900 dark:text-gray-100 font-sans">
+
+    <!-- Theme Toggle Floating Button (Mobile Friendly) -->
+    <div class="fixed bottom-6 right-6 z-50 md:hidden">
+        <button onclick="toggleTheme()" class="p-4 rounded-full bg-primary text-white shadow-2xl hover:scale-110 active:scale-95 transition-all">
+            <i class="theme-icon ph ph-moon-stars text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-dark/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="text-2xl font-black text-primary tracking-tighter">
+                PORTO<span class="text-gray-900 dark:text-white">FOLIO.</span>
+            </div>
+
+            <!-- Nav Links & Toggles -->
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex items-center gap-6 font-semibold">
+                    <a href="index.html" class="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
+                        <i class="ph ph-house text-xl"></i> Beranda
+                    </a>
+                    <a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">Proyek</a>
+                </div>
+
+                <!-- Vertical Divider -->
+                <div class="hidden md:block w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+
+                <!-- Dark Mode Toggle Desktop -->
+                <button onclick="toggleTheme()" class="hidden md:flex items-center justify-center w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all">
+                    <i class="theme-icon ph ph-moon-stars text-xl"></i>
+                </button>
+
+                <!-- Mobile Home Link -->
+                <a href="index.html" class="md:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 text-primary">
+                    <i class="ph ph-house text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+  
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-white dark:bg-dark transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">Proyek <span class="text-primary">Terbaru</span></h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto transition-colors duration-300">Beberapa karya dan proyek yang telah saya selesaikan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-gray-50 dark:bg-darker rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 group reveal transition-colors duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="./dist/img/project/Private room.PNG" alt="Proyek 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Screenshot+Proyek'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 dark:from-darker to-transparent opacity-60 dark:opacity-80"></div>
+                        <div class="absolute bottom-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 text-xs font-medium bg-white/90 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-full shadow-sm">CSS</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-white/90 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-full shadow-sm">Tailwind</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary dark:group-hover:text-primary transition-colors">Website Task Manager</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm line-clamp-3 transition-colors duration-300">
+                            Website untuk mengatur tugas-tugas telah dimasukkan oleh client tersebut dengan ambient dan gallery yang dibuat oleh saya sendiri.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="https://kazuhaaaaan.github.io/Private-room/" class="text-primary hover:text-blue-700 dark:hover:text-white transition-colors flex items-center gap-1 text-sm font-medium">
+                                <i class="ph ph-link text-lg"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/kazuhaaaaan/Private-room" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors flex items-center gap-1 text-sm font-medium">
+                                <i class="ph ph-github-logo text-lg"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-gray-50 dark:bg-darker rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 group reveal transition-colors duration-300" style="transition-delay: 0.1s;">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="./dist/img/project/PortoV1.PNG" alt="Proyek 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Screenshot+Proyek'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 dark:from-darker to-transparent opacity-60 dark:opacity-80"></div>
+                        <div class="absolute bottom-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 text-xs font-medium bg-white/90 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-full shadow-sm">Tailwind</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-white/90 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-full shadow-sm">Gemini Workstation</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary dark:group-hover:text-primary transition-colors">Website Portofolio V1</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm line-clamp-3 transition-colors duration-300">
+                            Project Website Portofolio Versi 1 yang dibuat dengan Gemini Pro dan di edit sendiri oleh saya atau Nouva Prasetya Ardhana
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="https://kazuhaaaaan.github.io/Webporto/#" class="text-primary hover:text-blue-700 dark:hover:text-white transition-colors flex items-center gap-1 text-sm font-medium">
+                                <i class="ph ph-link text-lg"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/kazuhaaaaan/Webporto" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors flex items-center gap-1 text-sm font-medium">
+                                <i class="ph ph-github-logo text-lg"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-gray-50 dark:bg-darker rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 group reveal transition-colors duration-300" style="transition-delay: 0.2s;">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="./dist/img/project/Sertif.PNG" alt="Proyek 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Screenshot+Proyek'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 dark:from-darker to-transparent opacity-60 dark:opacity-80"></div>
+                        <div class="absolute bottom-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 text-xs font-medium bg-white/90 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-full shadow-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-white/90 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-full shadow-sm">JS</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary dark:group-hover:text-primary transition-colors">Website Sertifkat Pribadi</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm line-clamp-3 transition-colors duration-300">
+                            Website yang berisi tentang prestasi atau sertifikat yang telah saya peroleh.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="./Sertif.html" class="text-primary hover:text-blue-700 dark:hover:text-white transition-colors flex items-center gap-1 text-sm font-medium">
+                                <i class="ph ph-link text-lg"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors flex items-center gap-1 text-sm font-medium">
+                                <i class="ph ph-github-logo text-lg"></i> -
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Section Link -->
+            <div class="mt-20 text-center reveal">
+                <a href="./index" class="group inline-flex items-center gap-3 text-white bg-primary hover:bg-blue-700 px-10 py-4 rounded-2xl shadow-xl shadow-blue-500/20 transition-all duration-300 font-black tracking-wide uppercase text-sm">
+                    Home
+                    <i class="ph ph-arrow-right group-hover:translate-x-1.5 transition-transform text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-gray-50 dark:bg-darker border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="mb-8 flex justify-center gap-6">
+                <a href="#" class="text-2xl text-gray-400 hover:text-primary transition-colors"><i class="ph ph-linkedin-logo"></i></a>
+                <a href="#" class="text-2xl text-gray-400 hover:text-primary transition-colors"><i class="ph ph-github-logo"></i></a>
+                <a href="#" class="text-2xl text-gray-400 hover:text-primary transition-colors"><i class="ph ph-instagram-logo"></i></a>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 font-medium">
+                &copy; 2024 Portofolio Saya. Semua hak cipta dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Theme Toggle Logic ---
+        function updateIcons(isDark) {
+            const icons = document.querySelectorAll('.theme-icon');
+            icons.forEach(icon => {
+                if (isDark) {
+                    icon.classList.replace('ph-moon-stars', 'ph-sun');
+                } else {
+                    icon.classList.replace('ph-sun', 'ph-moon-stars');
+                }
+            });
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateIcons(false);
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateIcons(true);
+            }
+        }
+
+        // Initialize Theme
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateIcons(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateIcons(false);
+        }
+
+        // --- Reveal Animation Logic ---
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+    </script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CertiFolio - Koleksi Sertifikat & Prestasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            border: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .transition-theme { transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-slate-100 min-h-screen font-sans transition-theme">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-dark-card/80 backdrop-blur-md border-b border-slate-200 dark:border-dark-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="p-2 bg-indigo-600 rounded-lg text-white">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight hidden sm:block">Certificates</span>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" id="theme-toggle" title="Ganti Tema">
+                        <i data-lucide="moon" class="dark:hidden text-slate-600"></i>
+                        <i data-lucide="sun" class="hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <div class="h-6 w-px bg-slate-200 dark:bg-dark-border"></div>
+                    
+                    <!-- Back to Home Link -->
+                    <a href="./index.html" class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group">
+                        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                        <span class="text-sm font-semibold hidden md:block">Back to Home</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="py-16 px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">
+            Koleksi Prestasi & Sertifikat
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            Dokumentasi perjalanan profesional, pengembangan diri, dan pencapaian akademik yang telah saya raih.
+        </p>
+    </header>
+
+    <!-- Controls Section -->
+    <section class="max-w-6xl mx-auto px-4 mb-8">
+        <div class="bg-white dark:bg-dark-card p-4 rounded-2xl shadow-sm border border-slate-200 dark:border-dark-border flex flex-col md:flex-row gap-4">
+            <!-- Search -->
+            <div class="relative flex-1">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"></i>
+                <input 
+                    type="text" 
+                    id="search-input"
+                    placeholder="Cari sertifikat atau instansi..."
+                    class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-indigo-500 transition-all outline-none"
+                >
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="flex overflow-x-auto gap-2 pb-2 md:pb-0 no-scrollbar" id="category-filters">
+                <!-- Categories will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 pb-20">
+        <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards will be injected here -->
+        </div>
+        
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden flex flex-col items-center justify-center py-20 text-center">
+            <div class="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-slate-400 mb-4">
+                <i data-lucide="search-x" size="32"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Tidak ditemukan hasil</h3>
+            <p class="text-slate-500">Coba ubah kata kunci atau filter kategori Anda.</p>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-all">
+        <div class="bg-white dark:bg-dark-card w-full max-w-3xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col scale-95 opacity-0 transition-all duration-300" id="modal-content">
+            <div class="p-4 flex justify-between items-center border-b border-slate-100 dark:border-dark-border">
+                <h2 class="font-bold text-lg">Detail Pencapaian</h2>
+                <button onclick="closeModal()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="overflow-y-auto p-6" id="modal-body">
+                <!-- Modal content injected here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white dark:bg-dark-card border-t border-slate-200 dark:border-dark-border py-10 mt-10">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">
+                &copy; <span id="year"></span> Portofolio Prestasi. Dibuat dengan HTML & Tailwind CSS.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Data
+        const achievements = [
+            {
+                id: 1,
+                title: "Mikrotik Certifid Network Associte",
+                issuer: "Mikrotik",
+                date: "2025-07-09",
+                category: "Teknologi",
+                description: "Sertifikat kelulusan bootcamp Mikrotik Network Associate,Mempelajari dasar-dasar penggunaan device mikrotik.",
+                image: "./dist/img/Sertif/SertifMTCNA.jpg",
+                credentialId: "2507NA9705"
+            },
+            {
+                id: 2,
+                title: "Sertifikat pelatihan MTCNA",
+                issuer: "SMK CYBER MEDIA X ID-NETWORKERS",
+                date: "2025-07-09",
+                category: "Bootcamp",
+                description: "Memenangkan kompetisi desain tingkat nasional dengan solusi aplikasi kesehatan mental yang inklusif.",
+                image: "./dist/img/Sertif/SertifPelatihanMTCNA.jpg",
+                credentialId: "-"
+            },
+            {
+                id: 3,
+                title: "Certified Intern Internetindo Data Centra Indonesia",
+                issuer: "IDC Indonesia",
+                date: "2025-10-01",
+                category: "Intern",
+                description: "Sertifikasi telah menyelesaikan intern di data center IDC Indonesia",
+                image: "./dist/img/Sertif/SertifikatNouvaIDC.jpg",
+                credentialId: "-"
+            },
+            {
+                id: 4,
+                title: "Sertifikat OSIS Ketua Sekbid HPD",
+                issuer: "SMKS CYBER MEDIA JAKARTA",
+                date: "2024",
+                category: "Soft Skills",
+                description: "Sertifikat OSIS sebagai Ketua Sekbid HPD.",
+                image: "./dist/img/Sertif/SertifKetuaSekbidHPD.png",
+                credentialId: "946/ST/A/CM/X/2024"
+            },
+            {
+                id: 5,
+                title: "Sertifikat Dasar-Dasar Data Center Untuk Profesional IT",
+                issuer: "ID-NETWORKERS",
+                date: "2025-11-29",
+                category: "Bootcamp",
+                description: "Sertifikat peserta Bootcamp Dasar-Dasar Data Center Untuk Profesional IT",
+                image: "./dist/img/Sertif/NouvaDDDC.jpg",
+                credentialId: "946/ST/A/CM/X/2024"
+            },
+             {
+                id: 6,
+                title: "Sertifikat Dasar-Dasar AI",
+                issuer: "Dicoding",
+                date: "2025-10-05",
+                category: "Bootcamp",
+                description: "Sertifikat peserta bootcamp Dasar-Dasar Ai by Dicoding ",
+                image: "./dist/img/Sertif/Sertifikat_dicoding_Ai.jpg",
+                credentialId: "EYX4KVY36PDL"
+            },
+            {
+                id: 7,
+                title: "Sertifikat Coding Camp",
+                issuer: "RevoU",
+                date: "2025-07-25",
+                category: "Bootcamp",
+                description: "Sertifikat peserta bootcamp Coding Camp by RevoU ",
+                image: "./dist/img/Sertif/SertifRevoUNouva.jpg",
+                credentialId: "CCSE210725-01-1-00007"
+            },
+            {
+                id: 8,
+                title: "Sertifikat Basic BGP di Juniper",
+                issuer: "ID-Networkes",
+                date: "2025-11-27",
+                category: "Bootcamp",
+                description: "Sertifikat peserta bootcamp Basic BGP di Juniper By ID-NETWORKERS",
+                image: "./dist/img/Sertif/Nouvabasicjuniper.jpg",
+                credentialId: "-"
+            },
+            {
+                id: 9,
+                title: "Sertifikat Basic Mobile Pentesting",
+                issuer: "ID-Networkes",
+                date: "2025-01-27",
+                category: "Bootcamp",
+                description: "Sertifikat peserta bootcamp Basic Mobile Pentesting By ID-NETWORKERS",
+                image: "./dist/img/Sertif/Nouvabasicpentesting.jpg",
+                credentialId: "-"
+            },
+            {
+                id: 10,
+                title: "Sertifikat Solusi Praktis Membangun Sistem Keamanan Dari Nol",
+                issuer: "ID-Networkes",
+                date: "2025-01-29",
+                category: "Bootcamp",
+                description: "Sertifikat peserta bootcamp Solusi Praktis Membangun Sistem Keamanan Dari Nol By ID-NETWORKERS",
+                image: "./dist/img/Sertif/SertifWebinarsolusi.jpg",
+                credentialId: "-"
+            },
+            {
+            id: 11,
+                title: "Sertifikat Intern Network Operation Center Data Center",
+                issuer: "Uninet Media Sakti",
+                date: "2025-03-28",
+                category: "Intern",
+                description: "Sertifikat Praktik Kerja Lapangan di Uninet Media Sakti sebagai Teknisi dan NOC",
+                image: "./dist/img/Sertif/sertifikat PT.uninet media sakti.jpg",
+                credentialId: "-"
+            },
+        ];
+
+        const categories = ["Semua", "Teknologi", "Bootcamp", "Intern", "Soft Skills"];
+        let currentFilter = "Semua";
+        let currentSearch = "";
+
+        // State & DOM
+        const grid = document.getElementById('achievements-grid');
+        const emptyState = document.getElementById('empty-state');
+        const searchInput = document.getElementById('search-input');
+        const categoryContainer = document.getElementById('category-filters');
+
+        function init() {
+            document.getElementById('year').innerText = new Date().getFullYear();
+            renderCategories();
+            renderAchievements();
+            lucide.createIcons();
+            
+            // Theme Check
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
+        }
+
+        function renderCategories() {
+            categoryContainer.innerHTML = categories.map(cat => `
+                <button 
+                    onclick="setCategory('${cat}')"
+                    class="px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${currentFilter === cat ? 'bg-indigo-600 text-white shadow-lg' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}"
+                >
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            currentFilter = cat;
+            renderCategories();
+            renderAchievements();
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value.toLowerCase();
+            renderAchievements();
+        });
+
+        function renderAchievements() {
+            const filtered = achievements.filter(item => {
+                const matchesSearch = item.title.toLowerCase().includes(currentSearch) || item.issuer.toLowerCase().includes(currentSearch);
+                const matchesCat = currentFilter === "Semua" || item.category === currentFilter;
+                return matchesSearch && matchesCat;
+            });
+
+            if (filtered.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+            } else {
+                grid.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                grid.innerHTML = filtered.map(item => `
+                    <div class="group bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer" onclick="openModal(${item.id})">
+                        <div class="aspect-video relative overflow-hidden bg-slate-200 dark:bg-slate-800">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-3 left-3">
+                                <span class="px-3 py-1 bg-white/90 dark:bg-dark-card/90 backdrop-blur-sm text-xs font-bold rounded-full text-indigo-600 dark:text-indigo-400">
+                                    ${item.category}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <p class="text-xs text-slate-500 mb-2 flex items-center gap-1">
+                                <i data-lucide="calendar" class="w-3 h-3"></i> ${new Date(item.date).toLocaleDateString('id-ID', {year:'numeric', month:'long'})}
+                            </p>
+                            <h3 class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+                                ${item.title}
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">${item.description}</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-dark-border">
+                                <span class="text-xs font-medium text-slate-500 italic">Oleh: ${item.issuer}</span>
+                                <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                lucide.createIcons();
+            }
+        }
+
+        function openModal(id) {
+            const item = achievements.find(a => a.id === id);
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            const body = document.getElementById('modal-body');
+
+            body.innerHTML = `
+                <div class="rounded-xl overflow-hidden mb-6 border border-slate-200 dark:border-dark-border">
+                    <img src="${item.image}" class="w-full h-auto">
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full mb-2">${item.category}</span>
+                        <h2 class="text-2xl font-bold">${item.title}</h2>
+                        <p class="text-slate-500">${item.issuer}</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-100 dark:border-dark-border">
+                        <div>
+                            <p class="text-xs text-slate-400 font-bold mb-1 uppercase">Tanggal</p>
+                            <p class="font-medium flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4 text-indigo-500"></i> ${item.date}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-400 font-bold mb-1 uppercase">ID Kredensial</p>
+                            <p class="font-mono text-sm bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded inline-block">${item.credentialId}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-1">Deskripsi</h3>
+                        <p class="text-slate-600 dark:text-slate-400">${item.description}</p>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close modal on backdrop click
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        window.onload = init;
+    </script>
+</body>
+</html>
