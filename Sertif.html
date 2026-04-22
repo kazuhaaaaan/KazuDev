@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CertiFolio - Nouva Prasetya Ardhana</title>
     <link rel="icon" type="image/x-icon" href="./dist/img/logo2.png">
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -29,8 +38,14 @@
                 Certificates
             </div>
             <div class="flex items-center gap-4">
-                <button onclick="toggleDarkMode()"><i data-lucide="moon" class="dark:hidden"></i><i data-lucide="sun" class="hidden dark:block text-yellow-400"></i></button>
-                <a href="./index" class="text-sm font-semibold flex items-center gap-1 hover:text-indigo-600 transition-colors"><i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali</a>
+                <button onclick="toggleDarkMode()" id="theme-toggle">
+                    <i data-lucide="moon" class="dark:hidden"></i>
+                    <i data-lucide="sun" class="hidden dark:block text-yellow-400"></i>
+                </button>
+                <div class="h-6 w-px bg-slate-200 dark:bg-dark-border"></div>
+                <a href="./index" class="text-sm font-semibold flex items-center gap-1 hover:text-indigo-600 transition-colors">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali
+                </a>
             </div>
         </div>
     </nav>
@@ -73,7 +88,6 @@
     </footer>
 
     <script>
-        // 1. Inisialisasi Supabase - Hanya BOLEH SEKALI di sini
         const SB_URL = 'https://gnvyjnycgtmbktbcugda.supabase.co';
         const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdudnlqbnljZ3RtYmt0YmN1Z2RhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NTY2MjcsImV4cCI6MjA5MjQzMjYyN30.tHLospYWjAOIcYwBJBrSqh5GnW1Bt23ecJqrBSlehu8';
         const sbClient = window.supabase.createClient(SB_URL, SB_KEY);
@@ -83,30 +97,25 @@
         let currentFilter = "Semua";
         let currentSearch = "";
 
-        // 2. Fetch Data
         async function fetchCertificates() {
             const grid = document.getElementById('achievements-grid');
             grid.innerHTML = '<div class="col-span-full text-center py-10 animate-pulse">Menghubungkan ke database...</div>';
-
             try {
                 const { data, error } = await sbClient.from('certificates').select('*').order('date', { ascending: false });
                 if (error) throw error;
-
                 achievements = data;
-                console.log("Data diterima:", achievements); // Cek di console
                 renderCategories();
                 renderAchievements();
             } catch (err) {
                 console.error("Fetch Error:", err);
-                grid.innerHTML = `<div class="col-span-full text-center text-red-500 font-mono text-sm">Error: ${err.message}</div>`;
+                grid.innerHTML = `<div class="col-span-full text-center text-red-500">Error: ${err.message}</div>`;
             }
         }
 
-        // 3. Render UI
         function renderCategories() {
             const container = document.getElementById('category-filters');
             container.innerHTML = categories.map(cat => `
-                <button onclick="setCategory('${cat}')" class="px-4 py-2 rounded-xl text-sm font-medium transition-all ${currentFilter === cat ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                <button onclick="setCategory('${cat}')" class="px-4 py-2 rounded-xl text-sm font-medium transition-all ${currentFilter === cat ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700'}">
                     ${cat}
                 </button>
             `).join('');
@@ -121,7 +130,6 @@
         function renderAchievements() {
             const grid = document.getElementById('achievements-grid');
             const empty = document.getElementById('empty-state');
-            
             const filtered = achievements.filter(item => {
                 const matchesSearch = item.title.toLowerCase().includes(currentSearch) || item.issuer.toLowerCase().includes(currentSearch);
                 const matchesCat = currentFilter === "Semua" || item.category === currentFilter;
@@ -172,9 +180,7 @@
                 </div>
             `;
             modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('scale-95', 'opacity-0');
-            }, 10);
+            setTimeout(() => content.classList.remove('scale-95', 'opacity-0'), 10);
             lucide.createIcons();
         }
 
@@ -185,8 +191,10 @@
             setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
+        // 2. Perbaikan fungsi Toggle agar menyimpan ke localStorage
         function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
         }
 
         document.getElementById('search-input').addEventListener('input', (e) => {
@@ -194,12 +202,10 @@
             renderAchievements();
         });
 
-        // Close modal on backdrop click
         document.getElementById('modal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
 
-        // 4. Init
         window.onload = () => {
             document.getElementById('year').innerText = new Date().getFullYear();
             lucide.createIcons();
