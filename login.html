@@ -94,7 +94,7 @@
         async function checkSession() {
             const { data } = await sbClient.auth.getSession();
             if (data.session) {
-                window.location.href = 'admin.html'; // Kalau sudah login, langsung lempar ke admin
+                window.location.href = 'admin'; // Kalau sudah login, langsung lempar ke admin
             }
         }
         checkSession();
@@ -119,7 +119,7 @@
                 if (error) throw error;
 
                 // Login Berhasil
-                window.location.href = 'admin.html';
+                window.location.href = 'admin';
 
             } catch (err) {
                 alert('Waduh Gagal: ' + err.message);

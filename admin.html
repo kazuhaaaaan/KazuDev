@@ -135,7 +135,7 @@
         async function checkAuth() {
             const { data: { session } } = await sbAdmin.auth.getSession();
             if (!session) {
-                window.location.href = 'login.html';
+                window.location.href = 'login';
             } else {
                 document.body.classList.add('auth-ready');
                 loadAdminList();
