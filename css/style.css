@@ -1,0 +1,88 @@
+/* main css */
+ /* Custom Scrollbar dengan CSS Variables untuk Theme */
+            :root {
+                --sb-track: #f1f5f9; /* gray-100 */
+                --sb-thumb: #94a3b8; /* gray-400 */
+                --sb-thumb-hover: #64748b; /* gray-500 */
+            }
+            
+            html.dark {
+                --sb-track: #0f172a; /* dark */
+                --sb-thumb: #3b82f6; /* primary */
+                --sb-thumb-hover: #2563eb; /* blue-600 */
+            }
+
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: var(--sb-track);
+                transition: background 0.3s;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--sb-thumb);
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--sb-thumb-hover);
+            }
+
+            /* Scroll Animation Classes */
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s ease-out;
+            }
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Typing Effect Cursor */
+            .cursor {
+                display: inline-block;
+                width: 3px;
+                background-color: #3b82f6;
+                animation: blink 1s infinite;
+            }
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0; }
+            }
+
+        /* sertif css */
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            .glass-effect { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+        /* admin css */    
+            /* Sembunyikan halaman sampai auth terverifikasi */
+            body { opacity: 0; transition: opacity 0.5s; }
+            body.auth-ready { opacity: 1; }
+
+        /* project css */  
+                /* Custom Reveal Animation Styles */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth color transition for dark mode */
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
