@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,8 +100,11 @@
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-darker dark:text-gray-200 font-sans antialiased overflow-x-hidden transition-colors duration-300">
 
+    <!-- Wrapper Pelindung Layout -->
+    <div class="relative w-full overflow-hidden flex flex-col min-h-screen">
+
     <!-- Navbar -->
-    <nav class="fixed w-full z-40 transition-all duration-300" id="navbar">
+    <nav class="fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
@@ -667,9 +670,11 @@
     </footer>
 
     <!-- Back to top button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-blue-600 shadow-lg z-40 transform translate-y-4">
+    <button id="back-to-top" class="...">
         <i class="ph ph-caret-up text-2xl"></i>
     </button>
+
+    </div> <!-- Penutup Wrapper Pelindung Layout -->
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
