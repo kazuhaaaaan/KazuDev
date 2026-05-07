@@ -6,9 +6,8 @@
     <title>Portofolio | Nouva Prasetya Ardhana</title>
     <link rel="icon" type="image/x-icon" href="./dist/img/logo2.png">
     
-    <!-- Script Tema & Bahasa -->
     <script>
-        // Tema (Dark/Light)
+        //Tema (Dark/Light)
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
@@ -25,11 +24,8 @@
         }
     </script>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
@@ -70,15 +66,14 @@
         ::-webkit-scrollbar-thumb { background: var(--sb-thumb); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--sb-thumb-hover); }
 
-        /* Scroll Animation */
+        /* Scroll Animation Dinamis 2 Arah */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); 
         }
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) !important; 
         }
 
         /* Typing Cursor */
@@ -96,111 +91,139 @@
         /* Language Toggle Logic */
         html:not(.en-mode) .lang-en { display: none !important; }
         html.en-mode .lang-id { display: none !important; }
+
+        /* Navbar Pill */
+        #navbar {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-scrolled {
+            top: 1rem !important;
+            width: 90% !important;
+        }
+
+        /* ANIMASI STAGGERED LIST UNTUK SEMUA TAB */
+        .stagger-item {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .tab-content.active .stagger-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .tab-content.active .stagger-item:nth-child(1) { transition-delay: 100ms; }
+        .tab-content.active .stagger-item:nth-child(2) { transition-delay: 200ms; }
+        .tab-content.active .stagger-item:nth-child(3) { transition-delay: 300ms; }
+        .tab-content.active .stagger-item:nth-child(4) { transition-delay: 400ms; }
+        .tab-content.active .stagger-item:nth-child(5) { transition-delay: 500ms; }
+        .tab-content.active .stagger-item:nth-child(6) { transition-delay: 600ms; }
+        .tab-content.active .stagger-item:nth-child(7) { transition-delay: 700ms; }
+
+        /* Tilt Glare Customization */
+        .js-tilt-glare {
+            border-radius: 1.5rem;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-darker dark:text-gray-200 font-sans antialiased overflow-x-hidden transition-colors duration-300">
 
-    <!-- Wrapper Pelindung Layout -->
     <div class="relative w-full overflow-hidden flex flex-col min-h-screen">
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="#home" class="text-2xl font-bold text-gray-900 dark:text-white tracking-wider">
-                        Porto<span class="text-primary">Folio</span>
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-4xl z-50 transition-all duration-300" id="navbar">
+        <div id="nav-wrapper" class="bg-white/80 dark:bg-[#1d1052]/90 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-full shadow-2xl transition-all duration-500 overflow-hidden">
+            
+            <div class="flex justify-between items-center h-14 px-3 py-2">
+                <div class="flex items-center pl-2">
+                    <a href="#home" class="flex-shrink-0 transition-transform duration-300 hover:scale-105">
+                        <img src="./dist/img/logo2.png" alt="Logo" class="h-8 md:h-10 w-auto object-contain drop-shadow-sm">
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                        <span class="lang-id">Beranda</span><span class="lang-en">Home</span>
+                    </a>
+                    <a href="#about" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                        <span class="lang-id">Tentang</span><span class="lang-en">About</span>
+                    </a>
+                    <a href="#services" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                        <span class="lang-id">Layanan</span><span class="lang-en">Services</span>
+                    </a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                        <span class="lang-id">Proyek</span><span class="lang-en">Projects</span>
+                    </a>
+                    <a href="#contact" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                        <span class="lang-id">Kontak</span><span class="lang-en">Contact</span>
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-2 pr-1 md:pr-0">
+                    <div class="hidden sm:flex items-center mr-1 space-x-1">
+                        <button class="theme-toggle p-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors flex items-center justify-center">
+                            <i class="ph ph-moon text-lg dark:hidden"></i>
+                            <i class="ph ph-sun text-lg hidden dark:block"></i>
+                        </button>
+                        <button class="lang-toggle text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-primary p-2 flex items-center justify-center">
+                            <span class="lang-id">ID</span><span class="lang-en">EN</span>
+                        </button>
+                    </div>
+
+                    <a href="https://linktr.ee/Nouva_Prase?ltsid=8a15184a-fef6-43da-8e93-bcb6f28bf24b" target="_blank" class="px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm font-semibold bg-gray-900 text-white dark:bg-gray-100 dark:text-black rounded-full shadow-[0_0_15px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.4)] hover:shadow-[0_0_25px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] transition-all transform hover:scale-105 flex items-center justify-center">
+                        Hire Me
+                    </a>
+
+                    <button id="mobile-menu-btn" class="md:hidden p-1.5 text-gray-600 dark:text-gray-300 ml-1 focus:outline-none transition-transform duration-300">
+                        <i class="ph ph-list text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-dropdown" class="md:hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out px-4 flex flex-col space-y-2 pb-0">
+                <div class="flex flex-col space-y-1 pt-2 border-t border-gray-200/50 dark:border-white/10">
+                    <a href="#home" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                        <span class="lang-id">Beranda</span><span class="lang-en">Home</span>
+                    </a>
+                    <a href="#about" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                        <span class="lang-id">Tentang</span><span class="lang-en">About</span>
+                    </a>
+                    <a href="#services" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                        <span class="lang-id">Layanan</span><span class="lang-en">Services</span>
+                    </a>
+                    <a href="#projects" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                        <span class="lang-id">Proyek</span><span class="lang-en">Projects</span>
+                    </a>
+                    <a href="#contact" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                        <span class="lang-id">Kontak</span><span class="lang-en">Contact</span>
                     </a>
                 </div>
                 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors font-medium">
-                        <span class="lang-id">Beranda</span><span class="lang-en">Home</span>
-                    </a>
-                    <a href="#about" class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors font-medium">
-                        <span class="lang-id">Tentang</span><span class="lang-en">About</span>
-                    </a>
-                    <a href="#services" class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors font-medium">
-                        <span class="lang-id">Layanan</span><span class="lang-en">Services</span>
-                    </a>
-                    <a href="#projects" class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors font-medium">
-                        <span class="lang-id">Proyek</span><span class="lang-en">Projects</span>
-                    </a>
-                    <a href="#contact" class="nav-link text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors font-medium">
-                        <span class="lang-id">Kontak</span><span class="lang-en">Contact</span>
-                    </a>
-                    
-                    <div class="flex items-center space-x-3">
-                        <!-- Language Toggle -->
-                        <button class="lang-toggle text-sm font-bold text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white focus:outline-none transition-colors p-2 rounded-full bg-gray-200 dark:bg-gray-800 w-10 h-10 flex items-center justify-center">
-                            <span class="lang-id">ID</span>
-                            <span class="lang-en">EN</span>
-                        </button>
-
-                        <!-- Theme Toggle -->
-                        <button class="theme-toggle text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white focus:outline-none transition-colors p-2 rounded-full bg-gray-200 dark:bg-gray-800 w-10 h-10 flex items-center justify-center">
-                            <i class="ph ph-moon text-xl dark:hidden"></i>
-                            <i class="ph ph-sun text-xl hidden dark:block"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Mobile Buttons -->
-                <div class="md:hidden flex items-center space-x-2">
-                    <!-- Language Toggle Mobile -->
-                    <button class="lang-toggle text-sm font-bold text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white focus:outline-none transition-colors p-2 rounded-full bg-gray-200 dark:bg-gray-800 w-10 h-10 flex items-center justify-center">
-                        <span class="lang-id">ID</span>
-                        <span class="lang-en">EN</span>
-                    </button>
-                    <!-- Theme Toggle Mobile -->
-                    <button class="theme-toggle text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white focus:outline-none transition-colors p-2 rounded-full bg-gray-200 dark:bg-gray-800 w-10 h-10 flex items-center justify-center">
+                <div class="flex items-center justify-between py-4 border-t border-gray-200/50 dark:border-white/10 mt-2">
+                    <button class="theme-toggle flex items-center gap-2 px-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
                         <i class="ph ph-moon text-xl dark:hidden"></i>
                         <i class="ph ph-sun text-xl hidden dark:block"></i>
+                        <span class="dark:hidden font-semibold">Dark Mode</span>
+                        <span class="hidden dark:block font-semibold">Light Mode</span>
                     </button>
-                    <!-- Menu Button -->
-                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white focus:outline-none p-2 ml-1">
-                        <i class="ph ph-list text-3xl"></i>
+                    <button class="lang-toggle text-sm font-bold text-gray-700 dark:text-gray-200 hover:text-primary px-4 py-1.5 bg-gray-200/80 dark:bg-white/10 rounded-full transition-colors">
+                        <span class="lang-id">ID</span><span class="lang-en">EN</span>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-dark/95 backdrop-blur-md z-[60] hidden flex flex-col justify-center items-center space-y-8 h-screen w-full transition-all duration-300 opacity-0 transform translate-x-full">
-        <button id="close-menu-btn" class="absolute top-6 right-6 p-2 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors focus:outline-none">
-            <i class="ph ph-x text-3xl"></i>
-        </button>
-        
-        <a href="#home" class="mobile-link text-2xl font-semibold text-gray-800 dark:text-gray-200 hover:text-primary">
-            <span class="lang-id">Beranda</span><span class="lang-en">Home</span>
-        </a>
-        <a href="#about" class="mobile-link text-2xl font-semibold text-gray-800 dark:text-gray-200 hover:text-primary">
-            <span class="lang-id">Tentang</span><span class="lang-en">About</span>
-        </a>
-        <a href="#services" class="mobile-link text-2xl font-semibold text-gray-800 dark:text-gray-200 hover:text-primary">
-            <span class="lang-id">Layanan</span><span class="lang-en">Services</span>
-        </a>
-        <a href="#projects" class="mobile-link text-2xl font-semibold text-gray-800 dark:text-gray-200 hover:text-primary">
-            <span class="lang-id">Proyek</span><span class="lang-en">Projects</span>
-        </a>
-        <a href="#contact" class="mobile-link text-2xl font-semibold text-gray-800 dark:text-gray-200 hover:text-primary">
-            <span class="lang-id">Kontak</span><span class="lang-en">Contact</span>
-        </a>
-    </div>
-
-    <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden bg-gray-50 dark:bg-darker transition-colors duration-300">
-        <!-- Background decorative elements -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-20"></div>
-        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-20"></div>
+        
+        <div id="particles-js" class="absolute inset-0 z-0 opacity-60 dark:opacity-40 pointer-events-auto"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-20 z-0 pointer-events-none"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-20 z-0 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pointer-events-none">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 pointer-events-auto">
                 
-                <!-- Text Content -->
                 <div class="w-full md:w-1/2 text-center md:text-left reveal">
                     <p class="text-primary font-medium tracking-wide mb-2">
                         <span class="lang-id">Halo Semua, Saya</span><span class="lang-en">Hello Everyone, I am</span>
@@ -227,10 +250,9 @@
                     </div>
                 </div>
 
-                <!-- Image -->
                 <div class="w-full md:w-1/2 flex justify-center reveal" style="transition-delay: 0.2s;">
                     <div class="relative w-72 h-72 md:w-96 md:h-96">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-primary to-purple-500 rounded-full blur-2xl opacity-30 dark:opacity-40 animate-pulse"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary to-purple-500 rounded-full blur-2xl opacity-30 dark:opacity-40 animate-pulse pointer-events-none"></div>
                         <img src="./dist/img/nouvaprasetyaardhana.png" alt="Foto Profil" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-dark shadow-2xl transition-colors duration-300" onerror="this.src='https://via.placeholder.com/400x400/1e40af/ffffff?text=Foto+Anda'">
                     </div>
                 </div>
@@ -238,7 +260,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="py-24 bg-white dark:bg-dark transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -250,15 +271,13 @@
             </div>
 
             <div class="flex flex-col lg:flex-row items-center gap-12">
-                <!-- Image -->
                 <div class="w-full lg:w-5/12 reveal">
                     <div class="relative rounded-2xl overflow-hidden group shadow-lg dark:shadow-none">
                         <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kerja" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/1e40af/ffffff?text=Gambar+Kerja'">
-                        <div class="absolute inset-0 bg-primary mix-blend-overlay opacity-0 dark:opacity-20 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <div class="absolute inset-0 bg-primary mix-blend-overlay opacity-0 dark:opacity-20 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none"></div>
                     </div>
                 </div>
 
-                <!-- Content -->
                 <div class="w-full lg:w-7/12 reveal" style="transition-delay: 0.2s;">
                     <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300">IT Support & Network Engineer</h3>
                     <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed transition-colors duration-300">
@@ -266,7 +285,6 @@
                         <span class="lang-en">I am an information technology student with a focus on web development and computer networking. I have a deep passion for building functional digital systems, spanning from frontend and backend website development to deep explorations into networking and security domains.</span>
                     </p>
                     
-                    <!-- Tabs -->
                     <div class="mt-8">
                         <div class="flex space-x-6 border-b border-gray-200 dark:border-gray-700 mb-6 transition-colors duration-300 overflow-x-auto whitespace-nowrap">
                             <button class="tab-btn pb-2 text-primary border-b-2 border-primary font-medium transition-colors" onclick="openTab('skills', this)">
@@ -280,23 +298,21 @@
                             </button>
                         </div>
 
-                        <!-- Tab Content: Skills -->
-                        <div id="skills" class="tab-content active animate-fade-in">
+                        <div id="skills" class="tab-content active">
                             <ul class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                                <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> HTML5 / CSS3</li>
-                                <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> JavaScript</li>
-                                <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> React.js</li>
-                                <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> Tailwind CSS</li>
-                                <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> Git & GitHub</li>
-                                <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> Mikrotik</li>
-                                <li class="text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> Cisco</li>
+                                <li class="stagger-item text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> HTML5 / CSS3</li>
+                                <li class="stagger-item text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> JavaScript</li>
+                                <li class="stagger-item text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> React.js</li>
+                                <li class="stagger-item text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> Tailwind CSS</li>
+                                <li class="stagger-item text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> Git & GitHub</li>
+                                <li class="stagger-item text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> Mikrotik</li>
+                                <li class="stagger-item text-gray-700 dark:text-gray-300 flex items-center gap-2"><i class="ph ph-check-circle text-primary"></i> Cisco</li>
                             </ul>
                         </div>
 
-                        <!-- Tab Content: Experience -->
-                        <div id="experience" class="tab-content hidden animate-fade-in">
+                        <div id="experience" class="tab-content hidden">
                             <div class="space-y-4">
-                                <div>
+                                <div class="stagger-item">
                                     <h4 class="text-gray-900 dark:text-white font-medium transition-colors duration-300">Network Operation Center Intern <span class="text-primary text-sm">- PT Uninet Media Sakti</span></h4>
                                     <p class="text-gray-500 text-sm">
                                         <span class="lang-id">Jan 2025 - Maret 2025</span><span class="lang-en">Jan 2025 - March 2025</span>
@@ -309,7 +325,7 @@
                                         <span class="lang-id">Sertifikat</span><span class="lang-en">Certificate</span>
                                     </a>
                                 </div>
-                                <div>
+                                <div class="stagger-item">
                                     <h4 class="text-gray-900 dark:text-white font-medium transition-colors duration-300">Technical Support Intern <span class="text-primary text-sm">- PT Internetindo Data Centra Indonesia (IDC)</span></h4>
                                     <p class="text-gray-500 text-sm">
                                         <span class="lang-id">Mei 2025 - Sep 2025</span><span class="lang-en">May 2025 - Sep 2025</span>
@@ -322,7 +338,7 @@
                                         <span class="lang-id">Sertifikat</span><span class="lang-en">Certificate</span>
                                     </a>
                                 </div>
-                                <div>
+                                <div class="stagger-item">
                                     <h4 class="text-gray-900 dark:text-white font-medium transition-colors duration-300">
                                         <span class="lang-id">Web Developer Freelancer</span><span class="lang-en">Freelance Web Developer</span>
                                     </h4>
@@ -337,24 +353,23 @@
                             </div>
                         </div>
 
-                        <!-- Tab Content: Education -->
-                        <div id="education" class="tab-content hidden animate-fade-in">
+                        <div id="education" class="tab-content hidden">
                             <div class="space-y-4">
-                                <div>
+                                <div class="stagger-item">
                                     <h4 class="text-gray-900 dark:text-white font-medium transition-colors duration-300">
                                         <span class="lang-id">Teknik Jaringan Komputer & Telekomunikasi</span>
                                         <span class="lang-en">Computer Network & Telecommunication Engineering</span>
                                     </h4>
                                     <p class="text-gray-500 text-sm">SMKS Cyber Media Jakarta (2024 - 2025)</p>
                                 </div>
-                                <div>
+                                <div class="stagger-item">
                                     <h4 class="text-gray-900 dark:text-white font-medium transition-colors duration-300">Mikrotik Certified Network Associate</h4>
                                     <p class="text-gray-500 text-sm">MTCNA SMKS Cyber Media X ID-NETWORKERS (2025)</p>
                                     <a href="https://mikrotik.com/training/certificates/c479705c14f1d346c3bd" class="hover:text-primary dark:hover:text-primary text-gray-700 dark:text-gray-300 font-medium">
                                         <span class="lang-id">Sertifikat</span><span class="lang-en">Certificate</span>
                                     </a>
                                 </div>
-                                <div>
+                                <div class="stagger-item">
                                     <h4 class="text-gray-900 dark:text-white font-medium transition-colors duration-300">
                                         <span class="lang-id">Pelatihan Mikrotik Certified Network Associate</span>
                                         <span class="lang-en">Mikrotik Certified Network Associate Training</span>
@@ -372,9 +387,12 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-gray-50 dark:bg-darker transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" class="py-24 relative overflow-hidden bg-gray-50 dark:bg-darker transition-colors duration-300">
+        
+        <div class="absolute top-10 left-10 w-64 h-64 bg-primary/10 dark:bg-primary/5 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+        <div class="absolute bottom-10 right-10 w-64 h-64 bg-purple-500/10 dark:bg-purple-500/5 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
                     <span class="lang-id">Layanan <span class="text-primary">Saya</span></span>
@@ -384,46 +402,48 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white dark:bg-dark p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-primary transition-all duration-300 hover:-translate-y-2 group reveal shadow-sm">
-                    <div class="w-14 h-14 bg-blue-50 dark:bg-gray-800 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6">
-                        <i class="ph ph-browser text-3xl"></i>
+                <div class="reveal">
+                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
+                        <div class="w-14 h-14 bg-blue-50/80 dark:bg-white/5 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6 backdrop-blur-md shadow-sm">
+                            <i class="ph ph-browser text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Web Development</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300 relative z-10">
+                            <span class="lang-id">Membangun Website Responsif dan Ideal Bagi Client Serta Perawatan Jangka Panjang.</span>
+                            <span class="lang-en">Building responsive and ideal websites for clients, along with reliable long-term maintenance.</span>
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Web Development</h3>
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">
-                        <span class="lang-id">Membangun Website Responsif dan Ideal Bagi Client Serta Perawatan Jangka Panjang.</span>
-                        <span class="lang-en">Building responsive and ideal websites for clients, along with reliable long-term maintenance.</span>
-                    </p>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="bg-white dark:bg-dark p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-primary transition-all duration-300 hover:-translate-y-2 group reveal shadow-sm" style="transition-delay: 0.1s;">
-                    <div class="w-14 h-14 bg-blue-50 dark:bg-gray-800 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6">
-                        <i class="ph ph-devices text-3xl"></i>
+                <div class="reveal" style="transition-delay: 0.1s;">
+                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
+                        <div class="w-14 h-14 bg-blue-50/80 dark:bg-white/5 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6 backdrop-blur-md shadow-sm">
+                            <i class="ph ph-devices text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">IT Support</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300 relative z-10">
+                            <span class="lang-id">Membantu Client Untuk Menyelesaikan Masalah Terkait Device atau Perangkat Jaringan.</span>
+                            <span class="lang-en">Assisting clients in troubleshooting and resolving various device or network-related hardware and software issues.</span>
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">IT Support</h3>
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">
-                        <span class="lang-id">Membantu Client Untuk Menyelesaikan Masalah Terkait Device atau Perangkat Jaringan.</span>
-                        <span class="lang-en">Assisting clients in troubleshooting and resolving various device or network-related hardware and software issues.</span>
-                    </p>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="bg-white dark:bg-dark p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-primary transition-all duration-300 hover:-translate-y-2 group reveal shadow-sm" style="transition-delay: 0.2s;">
-                    <div class="w-14 h-14 bg-blue-50 dark:bg-gray-800 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6">
-                        <i class="ph ph-database text-3xl"></i>
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
+                        <div class="w-14 h-14 bg-blue-50/80 dark:bg-white/5 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6 backdrop-blur-md shadow-sm">
+                            <i class="ph ph-database text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Network Engineer</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300 relative z-10">
+                            <span class="lang-id">Membangun Jaringan Sesuai Permintaan Client dan Melakukan Troubleshoot Terhadap Jaringan Client.</span>
+                            <span class="lang-en">Designing and implementing network infrastructure according to client requests, as well as performing advanced network troubleshooting.</span>
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Network Engineer</h3>
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">
-                        <span class="lang-id">Membangun Jaringan Sesuai Permintaan Client dan Melakukan Troubleshoot Terhadap Jaringan Client.</span>
-                        <span class="lang-en">Designing and implementing network infrastructure according to client requests, as well as performing advanced network troubleshooting.</span>
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="py-24 bg-white dark:bg-dark transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -439,7 +459,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
                 <div class="bg-gray-50 dark:bg-darker rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 group reveal">
                     <div class="relative h-48 overflow-hidden">
                         <img src="./dist/img/project/Private room.PNG" alt="Project 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Screenshot+Proyek'">
@@ -468,7 +487,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
                 <div class="bg-gray-50 dark:bg-darker rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 group reveal" style="transition-delay: 0.1s;">
                     <div class="relative h-48 overflow-hidden">
                         <img src="./dist/img/project/PortoV1.PNG" alt="Project 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Screenshot+Proyek'">
@@ -497,7 +515,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
                 <div class="bg-gray-50 dark:bg-darker rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 group reveal" style="transition-delay: 0.2s;">
                     <div class="relative h-48 overflow-hidden">
                         <img src="./dist/img/project/Sertif.PNG" alt="Project 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Screenshot+Proyek'">
@@ -535,7 +552,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-24 bg-gray-50 dark:bg-darker transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -551,7 +567,6 @@
             </div>
 
             <div class="flex flex-col lg:flex-row gap-12">
-                <!-- Contact Info -->
                 <div class="w-full lg:w-5/12 space-y-8 reveal">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 bg-blue-50 dark:bg-gray-800 text-primary rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300">
@@ -587,7 +602,6 @@
                         </div>
                     </div>
 
-                    <!-- Social Links -->
                     <div class="pt-6">
                         <h4 class="text-gray-900 dark:text-white font-semibold mb-4 transition-colors duration-300">
                             <span class="lang-id">Ikuti Saya</span><span class="lang-en">Follow Me</span>
@@ -603,11 +617,9 @@
                                 <i class="ph ph-instagram-logo text-xl"></i>
                             </a>
                             
-                            <!-- WhatsApp Link ID -->
                             <a href="https://api.whatsapp.com/send/?phone=6285163725110&text=Halo+Nouva%2C+perkenalkan+saya+%5BNama+Anda%5D+dari+%5BInstansi%2FUsaha+Anda%5D.%0ASaya+menghubungi+Anda+melalui+Website.%0ATujuan+saya+adalah+untuk+menjalin+komunikasi+atau+kerja+sama+bisnis.%0ASaya+berharap+kita+bisa+berdiskusi+lebih+lanjut+mengenai+peluang+tersebut.%0ATerima+kasih+atas+perhatian+dan+waktunya.&type=phone_number&app_absent=0" target="_blank" class="lang-id w-10 h-10 bg-gray-200 dark:bg-gray-800 hover:bg-primary text-gray-600 dark:text-gray-300 hover:text-white rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1">
                                 <i class="ph ph-whatsapp-logo text-xl"></i>
                             </a>
-                            <!-- WhatsApp Link EN -->
                             <a href="https://api.whatsapp.com/send/?phone=6285163725110&text=Hello+Nouva%2C+my+name+is+%5BYour+Name%5D+from+%5BYour+Company%2FBusiness%5D.%0AI+am+contacting+you+through+your+website.%0AMy+purpose+is+to+establish+communication+or+business+cooperation.%0AI+hope+we+can+discuss+this+opportunity+further.%0AThank+you+for+your+time+and+attention.&type=phone_number&app_absent=0" target="_blank" class="lang-en w-10 h-10 bg-gray-200 dark:bg-gray-800 hover:bg-primary text-gray-600 dark:text-gray-300 hover:text-white rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1">
                                 <i class="ph ph-whatsapp-logo text-xl"></i>
                             </a>
@@ -615,7 +627,6 @@
                     </div>
                 </div>
 
-                <!-- Contact Form -->
                 <div class="w-full lg:w-7/12 reveal" style="transition-delay: 0.2s;">
                     <form id="contact-form" action="https://formspree.io/f/mdkdkgnl" method="POST" class="bg-white dark:bg-dark p-8 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-6 shadow-sm transition-colors duration-300">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -656,7 +667,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-white dark:bg-dark border-t border-gray-200 dark:border-gray-800 py-8 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-gray-600 dark:text-gray-400 text-sm text-center md:text-left transition-colors duration-300">
@@ -669,15 +679,15 @@
         </div>
     </footer>
 
-    <!-- Back to top button -->
-    <button id="back-to-top" class="...">
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-blue-600 focus:outline-none z-50">
         <i class="ph ph-caret-up text-2xl"></i>
     </button>
 
-    </div> <!-- Penutup Wrapper Pelindung Layout -->
+    </div> <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         const SB_URL = 'https://gnvyjnycgtmbktbcugda.supabase.co';
         const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdudnlqbnljZ3RtYmt0YmN1Z2RhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NTY2MjcsImV4cCI6MjA5MjQzMjYyN30.tHLospYWjAOIcYwBJBrSqh5GnW1Bt23ecJqrBSlehu8';
@@ -703,7 +713,7 @@
         // Update Copyright Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Placeholders Updater Function based on language
+        // Placeholders Updater
         function updatePlaceholders() {
             const isEn = document.documentElement.classList.contains('en-mode');
             const inputs = document.querySelectorAll('input[data-ph-id], textarea[data-ph-id]');
@@ -711,8 +721,6 @@
                 input.placeholder = isEn ? input.getAttribute('data-ph-en') : input.getAttribute('data-ph-id');
             });
         }
-
-        // Initialize placeholder
         updatePlaceholders();
 
         // Language Toggle Logic
@@ -727,7 +735,7 @@
                 document.documentElement.lang = 'en';
                 localStorage.lang = 'en';
             }
-            updatePlaceholders(); // update input placeholder on click
+            updatePlaceholders();
         }
         langToggleBtns.forEach(btn => btn.addEventListener('click', toggleLanguage));
 
@@ -750,15 +758,11 @@
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/90', 'dark:bg-dark/90', 'backdrop-blur-md', 'shadow-sm', 'dark:shadow-lg');
-                navbar.classList.remove('bg-transparent', 'py-2');
-                
+                navbar.classList.add('nav-scrolled');
                 backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
                 backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
             } else {
-                navbar.classList.remove('bg-white/90', 'dark:bg-dark/90', 'backdrop-blur-md', 'shadow-sm', 'dark:shadow-lg');
-                navbar.classList.add('bg-transparent', 'py-2');
-                
+                navbar.classList.remove('nav-scrolled');
                 backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
                 backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
             }
@@ -769,33 +773,43 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle (Dynamic Dropdown)
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        const navWrapper = document.getElementById('nav-wrapper');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
 
         function toggleMenu() {
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => {
-                    mobileMenu.classList.remove('opacity-0', 'translate-x-full');
-                    mobileMenu.classList.add('opacity-100', 'translate-x-0');
-                }, 10);
-                document.body.style.overflow = 'hidden'; 
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileDropdown.classList.remove('max-h-0', 'opacity-0', 'pb-0');
+                mobileDropdown.classList.add('max-h-[400px]', 'opacity-100', 'pb-2');
+                navWrapper.classList.remove('rounded-full');
+                navWrapper.classList.add('rounded-3xl'); 
+                menuIcon.classList.remove('ph-list');
+                menuIcon.classList.add('ph-x'); 
+                menuIcon.style.transform = 'rotate(90deg)';
+                setTimeout(() => menuIcon.style.transform = 'rotate(0deg)', 150);
             } else {
-                mobileMenu.classList.remove('opacity-100', 'translate-x-0');
-                mobileMenu.classList.add('opacity-0', 'translate-x-full');
+                mobileDropdown.classList.add('max-h-0', 'opacity-0', 'pb-0');
+                mobileDropdown.classList.remove('max-h-[400px]', 'opacity-100', 'pb-2');
                 setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                    document.body.style.overflow = '';
+                    navWrapper.classList.add('rounded-full');
+                    navWrapper.classList.remove('rounded-3xl');
                 }, 300);
+                menuIcon.classList.remove('ph-x');
+                menuIcon.classList.add('ph-list');
+                menuIcon.style.transform = 'rotate(-90deg)';
+                setTimeout(() => menuIcon.style.transform = 'rotate(0deg)', 150);
             }
         }
 
         mobileMenuBtn.addEventListener('click', toggleMenu);
-        closeMenuBtn.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+        mobileLinks.forEach(link => link.addEventListener('click', () => {
+            if (isMenuOpen) toggleMenu(); 
+        }));
 
         // Tab System for About Section
         function openTab(tabName, button) {
@@ -818,7 +832,7 @@
             button.classList.add('text-primary', 'border-primary');
         }
 
-        // Typing Effect (Text is same for both EN/ID as they are standard industry terms)
+        // Typing Effect 
         const typedTextSpan = document.getElementById("typed-text");
         const textArray = ["Web Developer", "IT Support", "Freelancer", "Network Engineer"];
         const typingDelay = 100;
@@ -853,17 +867,29 @@
             if (textArray.length) setTimeout(type, newTextDelay + 250);
         });
 
-        // Scroll Animation
+        // Scroll Animation Dinamis 2 Arah (Atas/Bawah)
         const revealElements = document.querySelectorAll('.reveal');
-        const revealCallback = (entries, observer) => {
+        
+        revealElements.forEach(el => {
+            el.style.transform = 'translateY(50px)';
+        });
+
+        const revealCallback = (entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); 
+                } else {
+                    entry.target.classList.remove('active');
+                    if (entry.boundingClientRect.top < 0) {
+                        entry.target.style.transform = 'translateY(-50px)';
+                    } else {
+                        entry.target.style.transform = 'translateY(50px)';
+                    }
                 }
             });
         };
-        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+        
+        const revealOptions = { threshold: 0.15 };
         const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
         revealElements.forEach(el => revealObserver.observe(el));
 
@@ -889,6 +915,38 @@
             });
         });
 
+        // Konfigurasi Partikel Jaringan 
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#3b82f6" }, 
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#3b82f6",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
+        });
+
         // FORMSPREE LOGIC
         const contactForm = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
@@ -898,9 +956,8 @@
             e.preventDefault();
             
             const isEn = document.documentElement.classList.contains('en-mode');
-            const originalHtml = submitBtn.innerHTML; // Menyimpan HTML tombol utuh (dengan span/i)
+            const originalHtml = submitBtn.innerHTML; 
             
-            // Loading Status
             submitBtn.innerHTML = isEn 
                 ? '<i class="ph ph-spinner animate-spin text-xl"></i> Sending...'
                 : '<i class="ph ph-spinner animate-spin text-xl"></i> Mengirim...';
@@ -926,7 +983,7 @@
                 formMessage.textContent = isEn ? "Oops! An error occurred while sending the message." : "Oops! Terjadi kesalahan saat mengirim pesan.";
                 formMessage.className = "text-red-500 block text-sm py-2";
             } finally {
-                submitBtn.innerHTML = originalHtml; // Mengembalikan HTML tombol (ID/EN)
+                submitBtn.innerHTML = originalHtml; 
                 submitBtn.disabled = false;
                 
                 setTimeout(() => {
