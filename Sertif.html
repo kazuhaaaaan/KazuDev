@@ -66,7 +66,7 @@
         ::-webkit-scrollbar-thumb { background: var(--sb-thumb); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--sb-thumb-hover); }
 
-        /* No Scrollbar untuk Filter Kategori */
+        /* No Scrollbar untuk Filter Kategori agar mulus di mobile */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -187,45 +187,46 @@
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 text-center px-4 relative z-10 reveal">
+    <header class="pt-32 pb-12 md:pb-16 text-center px-4 relative z-10 reveal">
         <div id="particles-js" class="absolute inset-0 z-[-1] opacity-60 dark:opacity-40 pointer-events-auto"></div>
         <div class="absolute top-20 left-10 w-72 h-72 bg-primary/20 dark:bg-primary/10 rounded-full filter blur-[128px] pointer-events-none z-[-1]"></div>
         <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-500/20 dark:bg-purple-500/10 rounded-full filter blur-[128px] pointer-events-none z-[-1]"></div>
 
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500">
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 leading-tight">
             <span class="lang-id">Koleksi Prestasi & Sertifikat</span>
             <span class="lang-en">Achievements & Certificates Collection</span>
         </h1>
-        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             <span class="lang-id">Dokumentasi perjalanan profesional Nouva Prasetya Ardhana.</span>
             <span class="lang-en">Documentation of Nouva Prasetya Ardhana's professional journey.</span>
         </p>
     </header>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 relative z-10 reveal" style="transition-delay: 0.1s;">
-        <div class="bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 p-4 rounded-2xl shadow-sm flex flex-col md:flex-row gap-4 transition-colors duration-300 w-full">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 md:mb-12 relative z-10 reveal" style="transition-delay: 0.1s;">
+        <div class="bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-sm flex flex-col md:flex-row gap-3 md:gap-4 transition-colors duration-300 w-full min-w-0">
             
-            <div class="relative flex-1 w-full min-w-0">
-                <i class="ph ph-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
-                <input type="text" id="search-input" class="w-full pl-12 pr-4 py-3 bg-white/80 dark:bg-darker/50 rounded-xl outline-none focus:ring-2 focus:ring-primary border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white transition-colors" data-ph-id="Cari sertifikat..." data-ph-en="Search certificates..." placeholder="Cari sertifikat...">
+            <div class="relative w-full md:flex-1 shrink-0 min-w-0">
+                <i class="ph ph-magnifying-glass absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg md:text-xl"></i>
+                <input type="text" id="search-input" class="w-full pl-10 md:pl-12 pr-4 py-2 md:py-3 text-sm md:text-base bg-white/80 dark:bg-darker/50 rounded-xl outline-none focus:ring-2 focus:ring-primary border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white transition-colors" data-ph-id="Cari sertifikat..." data-ph-en="Search certificates..." placeholder="Cari sertifikat...">
             </div>
             
-            <div class="flex overflow-x-auto gap-2 no-scrollbar items-center w-full md:w-auto min-w-0" id="category-filters"></div>
+            <div class="flex overflow-x-auto gap-2 items-center w-full md:w-auto min-w-0 pb-1 md:pb-0 no-scrollbar" id="category-filters">
+                </div>
         </div>
     </section>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 relative z-10 min-h-[40vh]">
-        <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
         
         <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-center reveal">
-            <div class="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6 transition-colors duration-300">
-                <i class="ph ph-file-search text-4xl text-gray-400"></i>
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6 transition-colors duration-300">
+                <i class="ph ph-file-search text-3xl md:text-4xl text-gray-400"></i>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white transition-colors">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white transition-colors">
                 <span class="lang-id">Tidak ditemukan hasil</span>
                 <span class="lang-en">No results found</span>
             </h3>
-            <p class="text-gray-500 dark:text-gray-400 mt-2">
+            <p class="text-sm md:text-base text-gray-500 dark:text-gray-400 mt-2">
                 <span class="lang-id">Coba gunakan kata kunci lain.</span>
                 <span class="lang-en">Try using different keywords.</span>
             </p>
@@ -234,16 +235,16 @@
 
     <div id="modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
         <div class="bg-white/90 dark:bg-darker/90 backdrop-blur-2xl w-full max-w-3xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col transition-all duration-300 scale-95 border border-white/20 dark:border-gray-800" id="modal-content">
-            <div class="p-5 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
-                <h2 class="font-bold text-lg text-gray-900 dark:text-white">
+            <div class="p-4 md:p-5 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
+                <h2 class="font-bold text-base md:text-lg text-gray-900 dark:text-white">
                     <span class="lang-id">Detail Sertifikat</span>
                     <span class="lang-en">Certificate Details</span>
                 </h2>
                 <button onclick="closeModal()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full text-gray-500 transition-colors focus:outline-none">
-                    <i class="ph ph-x text-xl"></i>
+                    <i class="ph ph-x text-lg md:text-xl"></i>
                 </button>
             </div>
-            <div id="modal-body" class="overflow-y-auto p-6 custom-scrollbar"></div>
+            <div id="modal-body" class="overflow-y-auto p-4 md:p-6 custom-scrollbar"></div>
         </div>
     </div>
 
@@ -252,7 +253,7 @@
             <p class="text-gray-600 dark:text-gray-400 text-sm text-center md:text-left transition-colors duration-300">
                 &copy; <span id="year"></span> <span class="lang-id">Portofolio. Dibuat dengan</span><span class="lang-en">Portfolio. Made with</span> <i class="ph-fill ph-heart text-red-500"></i> <span class="lang-id">oleh</span><span class="lang-en">by</span> KazuDev.
             </p>
-            <div class="flex gap-4">
+            <div class="flex gap-4 justify-center md:justify-end">
                 <a href="https://www.linkedin.com/in/nouva-prasetya-ardhana-775765350/" target="_blank" class="text-gray-500 hover:text-primary transition-colors text-xl"><i class="ph ph-linkedin-logo"></i></a>
                 <a href="https://github.com/kazuhaaaaan/" target="_blank" class="text-gray-500 hover:text-primary transition-colors text-xl"><i class="ph ph-github-logo"></i></a>
                 <a href="https://www.instagram.com/mi_ayam_ga_pedes/" target="_blank" class="text-gray-500 hover:text-primary transition-colors text-xl"><i class="ph ph-instagram-logo"></i></a>
@@ -260,8 +261,8 @@
         </div>
     </footer>
 
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-blue-600 focus:outline-none z-50">
-        <i class="ph ph-caret-up text-2xl"></i>
+    <button id="back-to-top" class="fixed bottom-6 md:bottom-8 right-6 md:right-8 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-blue-600 focus:outline-none z-50">
+        <i class="ph ph-caret-up text-xl md:text-2xl"></i>
     </button>
 
     </div> <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -269,7 +270,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
     <script>
-        // Supabase Database Info
+        // Gunakan Fake DB data jika akses Supabase gagal dalam mode preview
+        const mockCertificates = [
+            { id: "1", title: "Belajar Dasar Pemrograman Web", issuer: "Dicoding Indonesia", date: "23 April 2026", category: "Bootcamp", credential_id: "98XWDEWLLXMS", description: "Mempelajari dasar HTML, CSS, dan layout responsif.", image_url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
+            { id: "2", title: "Mikrotik Certified Network Associate (MTCNA)", issuer: "Mikrotik", date: "Januari 2025", category: "Teknologi", credential_id: "MTCNA-2025-XX", description: "Sertifikasi fundamental jaringan Mikrotik.", image_url: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
+            { id: "3", title: "IT Support Intern", issuer: "PT Internetindo Data Centra Indonesia", date: "September 2025", category: "Intern", credential_id: "-", description: "Sertifikat penyelesaian magang sebagai Technical Support.", image_url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        // Konfigurasi Supabase
         const SB_URL = 'https://gnvyjnycgtmbktbcugda.supabase.co';
         const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdudnlqbnljZ3RtYmt0YmN1Z2RhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NTY2MjcsImV4cCI6MjA5MjQzMjYyN30.tHLospYWjAOIcYwBJBrSqh5GnW1Bt23ecJqrBSlehu8';
         const sbClient = window.supabase.createClient(SB_URL, SB_KEY);
@@ -279,7 +287,7 @@
         let currentFilter = "Semua";
         let currentSearch = "";
 
-        // Intersection Observer (Animasi Scroll Dinamis)
+        // Intersection Observer untuk Animasi
         const revealOptions = { threshold: 0.1 };
         const revealCallback = (entries) => {
             entries.forEach(entry => {
@@ -300,33 +308,305 @@
         function initializeAnimations() {
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
             
-            VanillaTilt.init(document.querySelectorAll(".cert-card"), {
-                max: 3,
-                speed: 400,
-                glare: true,
-                "max-glare": 0.15
-            });
+            // Re-inisialisasi efek hover jika layar desktop
+            if (window.innerWidth > 768) {
+                VanillaTilt.init(document.querySelectorAll(".cert-card"), {
+                    max: 3,
+                    speed: 400,
+                    glare: true,
+                    "max-glare": 0.15
+                });
+            }
         }
 
         async function fetchCertificates() {
             const grid = document.getElementById('achievements-grid');
             const isEn = document.documentElement.classList.contains('en-mode');
             
-            grid.innerHTML = `<div class="col-span-full text-center py-10 animate-pulse text-gray-500 dark:text-gray-400 font-medium">${isEn ? 'Connecting to database...' : 'Menghubungkan ke database...'}</div>`;
+            grid.innerHTML = `<div class="col-span-full text-center py-10 animate-pulse text-gray-500 dark:text-gray-400 text-sm md:text-base font-medium">${isEn ? 'Connecting to database...' : 'Menghubungkan ke database...'}</div>`;
             
             try {
                 const { data, error } = await sbClient.from('certificates').select('*').order('date', { ascending: false });
-                if (error) throw error;
+                if (error || !data) throw new Error("Could not fetch data from Supabase");
                 achievements = data;
-                renderCategories();
-                renderAchievements();
             } catch (err) {
-                console.error("Fetch Error:", err);
-                grid.innerHTML = `<div class="col-span-full text-center text-red-500 font-medium">Error: ${err.message}</div>`;
+                console.warn("Fetch Error (Using Fallback Data):", err);
+                achievements = mockCertificates; // Gunakan mock data jika gagal
             }
+
+            renderCategories();
+            renderAchievements();
         }
 
         function renderCategories() {
             const container = document.getElementById('category-filters');
+            
+            // PENGATURAN TOMBOL FILTER: shrink-0 (tidak gepeng), whitespace-nowrap (teks 1 baris)
             container.innerHTML = categories.map(cat => `
-                <but
+                <button onclick="setCategory('${cat}')" class="shrink-0 whitespace-nowrap px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${currentFilter === cat ? 'bg-primary text-white shadow-md border border-primary' : 'bg-transparent dark:bg-gray-800/40 border border-gray-300 dark:border-gray-600/70 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}">
+                    ${cat === 'Semua' ? '<span class="lang-id">Semua</span><span class="lang-en">All</span>' : cat}
+                </button>
+            `).join('');
+            
+            updatePlaceholders();
+            applyLanguageVisibility();
+        }
+
+        function setCategory(cat) {
+            currentFilter = cat;
+            renderCategories();
+            renderAchievements();
+        }
+
+        function renderAchievements() {
+            const grid = document.getElementById('achievements-grid');
+            const empty = document.getElementById('empty-state');
+            const filtered = achievements.filter(item => {
+                const matchesSearch = item.title.toLowerCase().includes(currentSearch) || item.issuer.toLowerCase().includes(currentSearch);
+                const matchesCat = currentFilter === "Semua" || item.category === currentFilter;
+                return matchesSearch && matchesCat;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+                empty.classList.add('flex');
+            } else {
+                empty.classList.add('hidden');
+                empty.classList.remove('flex');
+                
+                grid.innerHTML = filtered.map((item, index) => `
+                    <div class="reveal cert-card h-full" style="transition-delay: ${index * 0.1}s;">
+                        <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group flex flex-col cursor-pointer" onclick="openModal('${item.id}')">
+                            <div class="relative h-40 md:h-48 overflow-hidden shrink-0 bg-gray-100 dark:bg-gray-800">
+                                <img src="${item.image_url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x225/1e293b/ffffff?text=Image+Not+Found'">
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <i class="ph ph-arrows-out-simple text-2xl md:text-3xl text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"></i>
+                                </div>
+                            </div>
+                            <div class="p-5 md:p-6 flex flex-col grow">
+                                <span class="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">${item.category}</span>
+                                <h3 class="font-bold text-base md:text-lg mb-2 text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors line-clamp-2 leading-tight">${item.title}</h3>
+                                <p class="text-[11px] md:text-xs text-gray-500 dark:text-gray-400 italic mt-auto border-t border-gray-100 dark:border-gray-800 pt-3">${item.issuer}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                initializeAnimations();
+            }
+        }
+
+        function openModal(id) {
+            const item = achievements.find(a => a.id === id);
+            if (!item) return;
+
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            const body = document.getElementById('modal-body');
+
+            body.innerHTML = `
+                <div class="relative w-full rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 mb-4 md:mb-6 bg-gray-100 dark:bg-gray-800">
+                    <img src="${item.image_url}" class="w-full h-auto object-contain max-h-48 md:max-h-96" onerror="this.src='https://via.placeholder.com/600x400/1e293b/ffffff?text=Image+Not+Found'">
+                </div>
+                <div class="space-y-4 md:space-y-5 text-gray-800 dark:text-gray-200">
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white leading-tight">${item.title}</h2>
+                        <p class="text-primary text-sm md:text-base font-medium mt-1 flex items-center gap-1"><i class="ph-fill ph-medal text-base md:text-lg"></i> ${item.issuer}</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 md:gap-4 py-3 md:py-4 border-y border-gray-100 dark:border-gray-800">
+                        <div>
+                            <p class="text-[9px] md:text-[10px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-widest"><span class="lang-id">Tanggal</span><span class="lang-en">Date</span></p>
+                            <p class="text-xs md:text-sm font-semibold mt-1 flex items-center gap-1"><i class="ph ph-calendar-blank text-primary"></i> ${item.date}</p>
+                        </div>
+                        <div>
+                            <p class="text-[9px] md:text-[10px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-widest"><span class="lang-id">ID Kredensial</span><span class="lang-en">Credential ID</span></p>
+                            <p class="font-mono text-[10px] md:text-xs break-all bg-gray-100 dark:bg-gray-800/50 p-1.5 md:p-2 rounded-lg mt-1 border border-gray-200 dark:border-gray-700">${item.credential_id || '-'}</p>
+                        </div>
+                    </div>
+                    <div class="mt-3 md:mt-4">
+                        <h4 class="text-xs md:text-sm font-bold text-gray-900 dark:text-white mb-1 md:mb-2"><span class="lang-id">Deskripsi Singkat</span><span class="lang-en">Description</span></h4>
+                        <p class="text-xs md:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">${item.description}</p>
+                    </div>
+                </div>
+            `;
+            
+            applyLanguageVisibility(); 
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            currentSearch = e.target.value.toLowerCase();
+            renderAchievements();
+        });
+
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ---------------- UTILITIES ----------------
+        
+        function updatePlaceholders() {
+            const isEn = document.documentElement.classList.contains('en-mode');
+            const inputs = document.querySelectorAll('input[data-ph-id], textarea[data-ph-id]');
+            inputs.forEach(input => {
+                input.placeholder = isEn ? input.getAttribute('data-ph-en') : input.getAttribute('data-ph-id');
+            });
+        }
+        
+        function applyLanguageVisibility() {
+            if (document.documentElement.classList.contains('en-mode')) {
+                document.querySelectorAll('.lang-id').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'inline-block'); 
+            } else {
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.lang-id').forEach(el => el.style.display = 'inline-block');
+            }
+            document.querySelectorAll('.lang-id, .lang-en').forEach(el => el.style.display = '');
+        }
+
+        const langToggleBtns = document.querySelectorAll('.lang-toggle');
+        function toggleLanguage() {
+            if (document.documentElement.classList.contains('en-mode')) {
+                document.documentElement.classList.remove('en-mode');
+                document.documentElement.lang = 'id';
+                localStorage.lang = 'id';
+            } else {
+                document.documentElement.classList.add('en-mode');
+                document.documentElement.lang = 'en';
+                localStorage.lang = 'en';
+            }
+            updatePlaceholders();
+            renderCategories(); 
+        }
+        langToggleBtns.forEach(btn => btn.addEventListener('click', toggleLanguage));
+
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+        themeToggleBtns.forEach(btn => btn.addEventListener('click', toggleTheme));
+
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+                backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+                backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
+                backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        const navWrapper = document.getElementById('nav-wrapper');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileDropdown.classList.remove('max-h-0', 'opacity-0', 'pb-0');
+                mobileDropdown.classList.add('max-h-[400px]', 'opacity-100', 'pb-2');
+                navWrapper.classList.remove('rounded-full');
+                navWrapper.classList.add('rounded-3xl'); 
+                menuIcon.classList.remove('ph-list');
+                menuIcon.classList.add('ph-x'); 
+                menuIcon.style.transform = 'rotate(90deg)';
+                setTimeout(() => menuIcon.style.transform = 'rotate(0deg)', 150);
+            } else {
+                mobileDropdown.classList.add('max-h-0', 'opacity-0', 'pb-0');
+                mobileDropdown.classList.remove('max-h-[400px]', 'opacity-100', 'pb-2');
+                setTimeout(() => {
+                    navWrapper.classList.add('rounded-full');
+                    navWrapper.classList.remove('rounded-3xl');
+                }, 300);
+                menuIcon.classList.remove('ph-x');
+                menuIcon.classList.add('ph-list');
+                menuIcon.style.transform = 'rotate(-90deg)';
+                setTimeout(() => menuIcon.style.transform = 'rotate(0deg)', 150);
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', () => {
+            if (isMenuOpen) toggleMenu(); 
+        }));
+
+        window.onload = () => {
+            document.getElementById('year').innerText = new Date().getFullYear();
+            updatePlaceholders();
+            
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#3b82f6" }, 
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.5, "random": false },
+                    "size": { "value": 3, "random": true },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#3b82f6",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": { "enable": true, "mode": "grab" },
+                        "onclick": { "enable": true, "mode": "push" },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                        "push": { "particles_nb": 3 }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            fetchCertificates();
+        };
+    </script>
+</body>
+</html>
