@@ -66,10 +66,11 @@
         ::-webkit-scrollbar-thumb { background: var(--sb-thumb); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--sb-thumb-hover); }
 
-        /* Scroll Animation Dinamis 2 Arah */
+        /* Scroll Animation Dinamis 2 Arah - OPTIMIZED */
         .reveal {
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); 
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1); 
+            will-change: opacity, transform;
         }
         .reveal.active {
             opacity: 1;
@@ -132,7 +133,7 @@
     <div class="relative w-full overflow-hidden flex flex-col min-h-screen">
 
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-4xl z-50 transition-all duration-300" id="navbar">
-        <div id="nav-wrapper" class="bg-white/80 dark:bg-[#1d1052]/90 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-full shadow-2xl transition-all duration-500 overflow-hidden">
+        <div id="nav-wrapper" class="bg-white/80 dark:bg-[#1d1052]/90 backdrop-blur-md md:backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-full shadow-2xl transition-all duration-500 overflow-hidden">
             
             <div class="flex justify-between items-center h-14 px-3 py-2">
                 <div class="flex items-center pl-2">
@@ -218,8 +219,8 @@
         
         <div id="particles-js" class="absolute inset-0 z-0 opacity-60 dark:opacity-40 pointer-events-auto"></div>
 
-        <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-20 z-0 pointer-events-none"></div>
-        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-20 z-0 pointer-events-none"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full mix-blend-normal md:mix-blend-multiply filter blur-[64px] md:blur-[128px] opacity-20 dark:opacity-20 z-0 pointer-events-none"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-normal md:mix-blend-multiply filter blur-[64px] md:blur-[128px] opacity-20 dark:opacity-20 z-0 pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pointer-events-none">
             <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 pointer-events-auto">
@@ -389,8 +390,8 @@
 
     <section id="services" class="py-24 relative overflow-hidden bg-gray-50 dark:bg-darker transition-colors duration-300">
         
-        <div class="absolute top-10 left-10 w-64 h-64 bg-primary/10 dark:bg-primary/5 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
-        <div class="absolute bottom-10 right-10 w-64 h-64 bg-purple-500/10 dark:bg-purple-500/5 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+        <div class="absolute top-10 left-10 w-64 h-64 bg-primary/10 dark:bg-primary/5 rounded-full filter blur-[48px] md:blur-[100px] pointer-events-none z-0"></div>
+        <div class="absolute bottom-10 right-10 w-64 h-64 bg-purple-500/10 dark:bg-purple-500/5 rounded-full filter blur-[48px] md:blur-[100px] pointer-events-none z-0"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
@@ -403,7 +404,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="reveal">
-                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
+                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-md md:backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
                         <div class="w-14 h-14 bg-blue-50/80 dark:bg-white/5 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6 backdrop-blur-md shadow-sm">
                             <i class="ph ph-browser text-3xl"></i>
                         </div>
@@ -416,7 +417,7 @@
                 </div>
 
                 <div class="reveal" style="transition-delay: 0.1s;">
-                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
+                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-md md:backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
                         <div class="w-14 h-14 bg-blue-50/80 dark:bg-white/5 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6 backdrop-blur-md shadow-sm">
                             <i class="ph ph-devices text-3xl"></i>
                         </div>
@@ -429,7 +430,7 @@
                 </div>
 
                 <div class="reveal" style="transition-delay: 0.2s;">
-                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
+                    <div class="h-full bg-white/60 dark:bg-white/5 backdrop-blur-md md:backdrop-blur-xl border border-white/50 dark:border-white/10 p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.02)] hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-500 group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15">
                         <div class="w-14 h-14 bg-blue-50/80 dark:bg-white/5 group-hover:bg-primary rounded-xl flex items-center justify-center text-primary group-hover:text-white transition-colors mb-6 backdrop-blur-md shadow-sm">
                             <i class="ph ph-database text-3xl"></i>
                         </div>
@@ -915,37 +916,39 @@
             });
         });
 
-        // Konfigurasi Partikel Jaringan 
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#3b82f6" }, 
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": false },
-                "size": { "value": 3, "random": true },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#3b82f6",
-                    "opacity": 0.4,
-                    "width": 1
+        // OPTIMASI: Konfigurasi Partikel Jaringan hanya jalan di Desktop/Tablet besar
+        if (window.innerWidth > 768) {
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#3b82f6" }, 
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.5, "random": false },
+                    "size": { "value": 3, "random": true },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#3b82f6",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
                 },
-                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": { "enable": true, "mode": "grab" },
+                        "onclick": { "enable": true, "mode": "push" },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                        "push": { "particles_nb": 3 }
+                    }
                 },
-                "modes": {
-                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
-                    "push": { "particles_nb": 3 }
-                }
-            },
-            "retina_detect": true
-        });
+                "retina_detect": true
+            });
+        }
 
         // FORMSPREE LOGIC
         const contactForm = document.getElementById('contact-form');
