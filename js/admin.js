@@ -158,6 +158,7 @@ window.deleteCertificate = async function(id, imageUrl) {
         // Hapus file gambar dari Storage terlebih dahulu
         if(imageUrl && imageUrl.includes('supabase.co')) {
             const fileName = imageUrl.split('/').pop();
+            if (fileName.includes('..')) throw new Error('Invalid file name');
             await sbAdmin.storage.from('certificates').remove([fileName]);
         }
         
