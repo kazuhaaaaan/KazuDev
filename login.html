@@ -40,12 +40,12 @@
                 <div class="inline-flex p-4 bg-indigo-600 rounded-3xl text-white shadow-lg shadow-indigo-200 dark:shadow-none mb-4">
                     <i data-lucide="shield-check" class="w-8 h-8"></i>
                 </div>
-                <h1 class="text-3xl font-extrabold tracking-tight">Admin Gate</h1>
-                <p class="text-slate-500 dark:text-slate-400 text-sm mt-2">Masuk untuk mengelola prestasi Nouva</p>
+                <h1 id="auth-title" class="text-3xl font-extrabold tracking-tight">Admin Gate</h1>
+                <p id="auth-subtitle" class="text-slate-500 dark:text-slate-400 text-sm mt-2">Masuk untuk mengelola prestasi Nouva</p>
             </div>
 
             <form id="login-form" class="space-y-6 relative">
-                <div>
+                <div id="email-group">
                     <label class="block text-sm font-bold mb-2 ml-1 opacity-80">Email Address</label>
                     <div class="relative">
                         <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"></i>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold mb-2 ml-1 opacity-80">Password</label>
+                    <label id="password-label" class="block text-sm font-bold mb-2 ml-1 opacity-80">Password</label>
                     <div class="relative">
                         <i data-lucide="key-round" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"></i>
                         <input type="password" id="password" placeholder="••••••••" required 
@@ -90,8 +90,32 @@
         const loginForm = document.getElementById('login-form');
         const loginBtn = document.getElementById('login-btn');
 
-        // --- 2. Cek Jika Sudah Login ---
+        // --- 2. Mode Reset Password (dari link email) ---
+        let recoveryMode = window.location.hash.includes('type=recovery');
+
+        function enterRecoveryMode() {
+            recoveryMode = true;
+            document.getElementById('auth-title').textContent = 'Reset Password';
+            document.getElementById('auth-subtitle').textContent = 'Masukkan password baru untuk akunmu';
+            document.getElementById('email-group').classList.add('hidden');
+            document.getElementById('email').disabled = true;
+            document.getElementById('email').required = false;
+            document.getElementById('password-label').textContent = 'Password Baru';
+            document.getElementById('password').value = '';
+            document.getElementById('password').placeholder = 'Password baru';
+            loginBtn.innerHTML = `<i data-lucide="key-round" class="w-5 h-5"></i> Simpan Password`;
+            lucide.createIcons();
+        }
+
+        if (recoveryMode) enterRecoveryMode();
+
+        sbClient.auth.onAuthStateChange((event) => {
+            if (event === 'PASSWORD_RECOVERY') enterRecoveryMode();
+        });
+
+        // --- 3. Cek Jika Sudah Login ---
         async function checkSession() {
+            if (recoveryMode) return;
             const { data } = await sbClient.auth.getSession();
             if (data.session) {
                 window.location.href = 'admin'; // Kalau sudah login, langsung lempar ke admin
@@ -99,7 +123,7 @@
         }
         checkSession();
 
-        // --- 3. Proses Login ---
+        // --- 4. Proses Login / Simpan Password Baru ---
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -111,6 +135,16 @@
             const password = document.getElementById('password').value;
 
             try {
+                if (recoveryMode) {
+                    const { error } = await sbClient.auth.updateUser({ password });
+                    if (error) throw error;
+
+                    alert('Password berhasil diperbarui. Silakan login dengan password baru.');
+                    await sbClient.auth.signOut();
+                    window.location.href = 'login.html';
+                    return;
+                }
+
                 const { data, error } = await sbClient.auth.signInWithPassword({
                     email: email,
                     password: password,
@@ -124,7 +158,9 @@
             } catch (err) {
                 alert('Waduh Gagal: ' + err.message);
                 loginBtn.disabled = false;
-                loginBtn.innerHTML = `<i data-lucide="log-in" class="w-5 h-5"></i> Masuk Sekarang`;
+                loginBtn.innerHTML = recoveryMode
+                    ? `<i data-lucide="key-round" class="w-5 h-5"></i> Simpan Password`
+                    : `<i data-lucide="log-in" class="w-5 h-5"></i> Masuk Sekarang`;
                 lucide.createIcons();
             }
         });

@@ -46,6 +46,9 @@
                     <i data-lucide="moon" class="dark:hidden w-5 h-5 text-slate-600"></i>
                     <i data-lucide="sun" class="hidden dark:block w-5 h-5 text-yellow-400"></i>
                 </button>
+                <button onclick="handleForgotPassword()" class="p-2 px-3 text-indigo-600 dark:text-indigo-400 font-bold text-xs bg-indigo-50 dark:bg-indigo-900/10 rounded-xl hover:bg-indigo-600 hover:text-white transition-all flex items-center gap-1">
+                    <i data-lucide="key-round" class="w-4 h-4"></i> Lupa Password
+                </button>
                 <button onclick="handleLogout()" class="p-2 px-3 text-red-500 font-bold text-xs bg-red-50 dark:bg-red-900/10 rounded-xl hover:bg-red-500 hover:text-white transition-all flex items-center gap-1">
                     <i data-lucide="log-out" class="w-4 h-4"></i> Logout
                 </button>
@@ -342,6 +345,29 @@
                 await sbAdmin.from('certificates').delete().eq('id', id);
                 loadAdminList();
             } catch (err) { alert('Hapus gagal: ' + err.message); }
+        }
+
+        async function handleForgotPassword() {
+            const { data: { session } } = await sbAdmin.auth.getSession();
+            const email = session?.user?.email;
+
+            if (!email) {
+                alert('Sesi tidak ditemukan. Silakan login ulang.');
+                window.location.href = 'login';
+                return;
+            }
+
+            if (!confirm('Kirim link reset password ke ' + email + '?')) return;
+
+            const { error } = await sbAdmin.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.origin + '/login.html'
+            });
+
+            if (error) {
+                alert('Gagal mengirim link reset password: ' + error.message);
+            } else {
+                alert('Link reset password telah dikirim ke ' + email + '. Silakan cek kotak masuk email.');
+            }
         }
 
         async function handleLogout() {
