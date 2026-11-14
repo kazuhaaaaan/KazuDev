@@ -360,7 +360,7 @@
             if (!confirm('Kirim link reset password ke ' + email + '?')) return;
 
             const { error } = await sbAdmin.auth.resetPasswordForEmail(email, {
-                redirectTo: window.location.origin + '/login.html'
+                redirectTo: window.location.origin + '/reset-password.html'
             });
 
             if (error) {

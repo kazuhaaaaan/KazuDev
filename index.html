@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio | Nouva Prasetya Ardhana</title>
     <link rel="icon" type="image/x-icon" href="./dist/img/logo2.webp">
+
+    <script>
+        // Teruskan link recovery Supabase ke halaman reset password
+        if (window.location.hash.includes('type=recovery')) {
+            window.location.replace('reset-password.html' + window.location.hash);
+        }
+    </script>
     
     <script>
         //Tema (Dark/Light)
