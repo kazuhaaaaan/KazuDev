@@ -13,7 +13,7 @@
             <div id="forgot-password-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
                 <div data-forgot-backdrop class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
                 <div role="dialog" aria-modal="true" aria-labelledby="forgot-title"
-                    class="relative w-full max-w-md bg-white dark:bg-dark-card rounded-[2rem] border border-slate-200 dark:border-dark-border shadow-2xl p-8 overflow-hidden">
+                    class="relative w-full max-w-md bg-white dark:bg-dark-card rounded-[2rem] border border-slate-200 dark:border-dark-border shadow-2xl p-6 sm:p-8 overflow-hidden">
                     <div class="absolute -top-10 -right-10 w-32 h-32 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
                     <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
