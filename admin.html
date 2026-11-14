@@ -140,6 +140,7 @@
         </section>
     </div>
 
+    <script src="js/forgot-password.js"></script>
     <script>
         // --- 1. KONFIGURASI SUPABASE ---
         const SB_URL = 'https://gnvyjnycgtmbktbcugda.supabase.co';
@@ -357,17 +358,11 @@
                 return;
             }
 
-            if (!confirm('Kirim link reset password ke ' + email + '?')) return;
-
-            const { error } = await sbAdmin.auth.resetPasswordForEmail(email, {
+            window.openForgotPasswordModal({
+                client: sbAdmin,
+                email: email,
                 redirectTo: window.location.origin + '/reset-password.html'
             });
-
-            if (error) {
-                alert('Gagal mengirim link reset password: ' + error.message);
-            } else {
-                alert('Link reset password telah dikirim ke ' + email + '. Silakan cek kotak masuk email.');
-            }
         }
 
         async function handleLogout() {

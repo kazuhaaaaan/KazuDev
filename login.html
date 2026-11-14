@@ -84,6 +84,7 @@
         </p>
     </div>
 
+    <script src="js/forgot-password.js"></script>
     <script>
         // --- 1. Konfigurasi Supabase ---
         const SUPABASE_URL = 'https://gnvyjnycgtmbktbcugda.supabase.co';
@@ -94,26 +95,14 @@
         const loginBtn = document.getElementById('login-btn');
         const forgotLink = document.getElementById('forgot-link');
 
-        // --- 2. Kirim Link Reset Password ---
-        forgotLink.addEventListener('click', async (e) => {
+        // --- 2. Popup Lupa Password ---
+        forgotLink.addEventListener('click', (e) => {
             e.preventDefault();
-            const emailInput = document.getElementById('email');
-            let email = emailInput.value.trim();
-
-            if (!email) {
-                email = (prompt('Masukkan email admin:') || '').trim();
-            }
-            if (!email) return;
-
-            const { error } = await sbClient.auth.resetPasswordForEmail(email, {
+            window.openForgotPasswordModal({
+                client: sbClient,
+                email: document.getElementById('email').value.trim(),
                 redirectTo: window.location.origin + '/reset-password.html'
             });
-
-            if (error) {
-                alert('Gagal mengirim link reset password: ' + error.message);
-            } else {
-                alert('Link reset password telah dikirim ke ' + email + '. Silakan cek kotak masuk email.');
-            }
         });
 
         // --- 3. Mode Reset Password (dari link email) ---
