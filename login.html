@@ -61,6 +61,9 @@
                         <input type="password" id="password" placeholder="••••••••" required 
                             class="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
                     </div>
+                    <div class="text-right mt-2">
+                        <a href="#" id="forgot-link" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Lupa Password?</a>
+                    </div>
                 </div>
 
                 <button type="submit" id="login-btn" 
@@ -89,8 +92,31 @@
 
         const loginForm = document.getElementById('login-form');
         const loginBtn = document.getElementById('login-btn');
+        const forgotLink = document.getElementById('forgot-link');
 
-        // --- 2. Mode Reset Password (dari link email) ---
+        // --- 2. Kirim Link Reset Password ---
+        forgotLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('email');
+            let email = emailInput.value.trim();
+
+            if (!email) {
+                email = (prompt('Masukkan email admin:') || '').trim();
+            }
+            if (!email) return;
+
+            const { error } = await sbClient.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.origin + '/login.html'
+            });
+
+            if (error) {
+                alert('Gagal mengirim link reset password: ' + error.message);
+            } else {
+                alert('Link reset password telah dikirim ke ' + email + '. Silakan cek kotak masuk email.');
+            }
+        });
+
+        // --- 3. Mode Reset Password (dari link email) ---
         let recoveryMode = window.location.hash.includes('type=recovery');
 
         function enterRecoveryMode() {
@@ -103,6 +129,7 @@
             document.getElementById('password-label').textContent = 'Password Baru';
             document.getElementById('password').value = '';
             document.getElementById('password').placeholder = 'Password baru';
+            forgotLink.classList.add('hidden');
             loginBtn.innerHTML = `<i data-lucide="key-round" class="w-5 h-5"></i> Simpan Password`;
             lucide.createIcons();
         }
@@ -113,7 +140,7 @@
             if (event === 'PASSWORD_RECOVERY') enterRecoveryMode();
         });
 
-        // --- 3. Cek Jika Sudah Login ---
+        // --- 4. Cek Jika Sudah Login ---
         async function checkSession() {
             if (recoveryMode) return;
             const { data } = await sbClient.auth.getSession();
@@ -123,7 +150,7 @@
         }
         checkSession();
 
-        // --- 4. Proses Login / Simpan Password Baru ---
+        // --- 5. Proses Login / Simpan Password Baru ---
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
