@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sertifikat | Nouva Prasetya Ardhana</title>
+    <title>Sertifikat | Nouva Prasetya Ardhana - KazuDev</title>
+    <meta name="description" content="Daftar sertifikat dan prestasi Nouva Prasetya Ardhana di bidang jaringan, keamanan, dan pengembangan web.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kazudev.my.id/Sertif.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KazuDev">
+    <meta property="og:url" content="https://kazudev.my.id/Sertif.html">
+    <meta property="og:title" content="Sertifikat | Nouva Prasetya Ardhana - KazuDev">
+    <meta property="og:description" content="Daftar sertifikat dan prestasi Nouva Prasetya Ardhana.">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#0f172a">
     <link rel="icon" type="image/x-icon" href="./dist/img/logo2.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <script>
         //Tema (Dark/Light)
@@ -27,7 +39,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="./css/enhancements.css">
+
     <script>
         tailwind.config = {
             darkMode: 'class', 
@@ -109,6 +122,9 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-darker dark:text-gray-200 font-sans antialiased overflow-x-hidden transition-colors duration-300">
+    <a href="#main" class="skip-link">
+        <span class="lang-id">Lewati ke konten</span><span class="lang-en">Skip to content</span>
+    </a>
 
     <div class="relative w-full overflow-hidden flex flex-col min-h-screen">
 
@@ -118,7 +134,7 @@
             <div class="flex justify-between items-center h-14 px-3 py-2">
                 <div class="flex items-center pl-2">
                     <a href="index.html" class="flex-shrink-0 transition-transform duration-300 hover:scale-105">
-                        <img src="./dist/img/logo2.webp" alt="Logo" class="h-8 md:h-10 w-auto object-contain drop-shadow-sm">
+                        <img src="./dist/img/logo2.webp" alt="Logo KazuDev" width="40" height="40" class="h-8 md:h-10 w-auto object-contain drop-shadow-sm">
                     </a>
                 </div>
 
@@ -222,7 +238,7 @@
         </div>
     </section>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 relative z-10 min-h-[40vh]">
+    <main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 relative z-10 min-h-[40vh]">
         <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         
         <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-center reveal">
@@ -578,7 +594,7 @@
             updatePlaceholders();
             
             // Konfigurasi Partikel Jaringan (Hanya Desktop)
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 particlesJS("particles-js", {
                     "particles": {
                         "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },

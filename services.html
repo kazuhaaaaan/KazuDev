@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan | KazuDev - Web Development, IT Support &amp; Jaringan</title>
+    <meta name="description" content="Layanan KazuDev: pengembangan website, infrastruktur dan topologi jaringan, IT support, serta layanan laptop dan hardware. Konsultasi langsung tanpa biaya tersembunyi.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://kazudev.my.id/services.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="KazuDev">
+    <meta property="og:url" content="https://kazudev.my.id/services.html">
+    <meta property="og:title" content="Layanan KazuDev - Web Development, IT Support &amp; Jaringan">
+    <meta property="og:description" content="Solusi website, jaringan, IT support, dan perawatan laptop dari KazuDev untuk individu dan bisnis.">
+    <meta property="og:image" content="https://kazudev.my.id/dist/img/logo2.webp">
+    <meta property="og:image:alt" content="Logo KazuDev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Layanan KazuDev">
+    <meta name="twitter:description" content="Web Development, IT Support, Network Infrastructure, dan layanan laptop.">
+    <meta name="twitter:image" content="https://kazudev.my.id/dist/img/logo2.webp">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" type="image/x-icon" href="./dist/img/logo2.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        if (localStorage.lang === 'en') {
+            document.documentElement.classList.add('en-mode');
+            document.documentElement.lang = 'en';
+        } else {
+            document.documentElement.classList.remove('en-mode');
+            document.documentElement.lang = 'id';
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/enhancements.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e40af',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "ProfessionalService",
+                "@id": "https://kazudev.my.id/#kazudev",
+                "name": "KazuDev",
+                "url": "https://kazudev.my.id",
+                "description": "KazuDev menyediakan layanan pengembangan website, IT support, infrastruktur jaringan, dan bantuan perangkat keras.",
+                "email": "nouvaprasetyaa@gmail.com",
+                "telephone": "+6285163725110",
+                "sameAs": [
+                    "https://github.com/kazuhaaaaan/",
+                    "https://www.linkedin.com/in/nouva-prasetya-ardhana-775765350/",
+                    "https://www.instagram.com/nouva_prasetya_ardhana?obrf=dXpodzlybTFtZzdk"
+                ]
+            },
+            {
+                "@type": "Service",
+                "name": "Website Development",
+                "provider": { "@id": "https://kazudev.my.id/#kazudev" },
+                "description": "Pengembangan website custom, website bisnis, landing page, portfolio, perawatan, dan solusi web."
+            },
+            {
+                "@type": "Service",
+                "name": "Network Infrastructure & Topology",
+                "provider": { "@id": "https://kazudev.my.id/#kazudev" },
+                "description": "Perencanaan jaringan rumah, kantor, dan workshop serta desain topologi dan konfigurasi perangkat."
+            },
+            {
+                "@type": "Service",
+                "name": "IT Support & Technical Assistance",
+                "provider": { "@id": "https://kazudev.my.id/#kazudev" },
+                "description": "Dukungan teknis freelance untuk kantor, troubleshooting perangkat, dan perawatan infrastruktur IT dasar."
+            },
+            {
+                "@type": "Service",
+                "name": "Laptop Service & Hardware Assistance",
+                "provider": { "@id": "https://kazudev.my.id/#kazudev" },
+                "description": "Instalasi sistem operasi, troubleshooting laptop, instalasi perangkat lunak, dan bantuan komponen yang kompatibel."
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root { --sb-track: #f1f5f9; --sb-thumb: #94a3b8; --sb-thumb-hover: #64748b; }
+        html.dark { --sb-track: #0f172a; --sb-thumb: #3b82f6; --sb-thumb-hover: #2563eb; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--sb-track); transition: background 0.3s; }
+        ::-webkit-scrollbar-thumb { background: var(--sb-thumb); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--sb-thumb-hover); }
+        html:not(.en-mode) .lang-en { display: none !important; }
+        html.en-mode .lang-id { display: none !important; }
+        #navbar { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-scrolled { top: 1rem !important; width: 90% !important; }
+        .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0) !important; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-darker dark:text-gray-200 font-sans antialiased overflow-x-hidden transition-colors duration-300">
+    <a href="#main" class="skip-link">
+        <span class="lang-id">Lewati ke konten</span><span class="lang-en">Skip to content</span>
+    </a>
+
+    <div class="relative w-full overflow-hidden flex flex-col min-h-screen">
+        <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-4xl z-50 transition-all duration-300" id="navbar" aria-label="Navigasi utama">
+            <div id="nav-wrapper" class="bg-white/80 dark:bg-[#1d1052]/90 backdrop-blur-md md:backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-full shadow-2xl transition-all duration-500 overflow-hidden">
+                <div class="flex justify-between items-center h-14 px-3 py-2">
+                    <div class="flex items-center pl-2">
+                        <a href="index.html" class="flex-shrink-0 transition-transform duration-300 hover:scale-105" aria-label="KazuDev - Beranda">
+                            <img src="./dist/img/logo2.webp" alt="Logo KazuDev" width="40" height="40" class="h-8 md:h-10 w-auto object-contain drop-shadow-sm">
+                        </a>
+                    </div>
+
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-7">
+                        <a href="index.html" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                            <span class="lang-id">Beranda</span><span class="lang-en">Home</span>
+                        </a>
+                        <a href="https://toko.kazudev.my.id" target="_blank" rel="noopener noreferrer" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                            <span class="lang-id">Toko</span><span class="lang-en">Store</span>
+                        </a>
+                        <a href="services.html" aria-current="page" class="nav-link text-sm font-medium text-primary dark:text-white transition-colors">
+                            <span class="lang-id">Layanan</span><span class="lang-en">Services</span>
+                        </a>
+                        <a href="portfolio.html" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                            <span class="lang-id">Portofolio</span><span class="lang-en">Portfolio</span>
+                        </a>
+                        <a href="index.html#contact" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+                            <span class="lang-id">Kontak</span><span class="lang-en">Contact</span>
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-2 pr-1 md:pr-0">
+                        <div class="hidden sm:flex items-center mr-1 space-x-1">
+                            <button class="theme-toggle p-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" aria-label="Ganti tema / Toggle theme">
+                                <i class="ph ph-moon text-lg dark:hidden"></i>
+                                <i class="ph ph-sun text-lg hidden dark:block"></i>
+                            </button>
+                            <button class="lang-toggle text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-primary p-2" aria-label="Ganti bahasa / Toggle language">
+                                <span class="lang-id">ID</span><span class="lang-en">EN</span>
+                            </button>
+                        </div>
+                        <a href="https://linktr.ee/Nouva_Prase?ltsid=8a15184a-fef6-43da-8e93-bcb6f28bf24b" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm font-semibold bg-gray-900 text-white dark:bg-gray-100 dark:text-black rounded-full shadow-lg hover:scale-105 transition-all">
+                            Hire Me
+                        </a>
+                        <button id="mobile-menu-btn" class="md:hidden p-1.5 text-gray-600 dark:text-gray-300 ml-1" aria-label="Buka menu / Open menu" aria-expanded="false" aria-controls="mobile-dropdown">
+                            <i class="ph ph-list text-2xl" id="menu-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="mobile-dropdown" class="md:hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out px-4 flex flex-col space-y-2 pb-0">
+                    <div class="flex flex-col space-y-1 pt-2 border-t border-gray-200/50 dark:border-white/10">
+                        <a href="index.html" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary rounded-lg">
+                            <span class="lang-id">Beranda</span><span class="lang-en">Home</span>
+                        </a>
+                        <a href="https://toko.kazudev.my.id" target="_blank" rel="noopener noreferrer" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary rounded-lg">
+                            <span class="lang-id">Toko</span><span class="lang-en">Store</span>
+                        </a>
+                        <a href="services.html" aria-current="page" class="mobile-link block px-2 py-2.5 text-sm font-medium text-primary dark:text-white bg-gray-100/50 dark:bg-white/5 rounded-lg">
+                            <span class="lang-id">Layanan</span><span class="lang-en">Services</span>
+                        </a>
+                        <a href="portfolio.html" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary rounded-lg">
+                            <span class="lang-id">Portofolio</span><span class="lang-en">Portfolio</span>
+                        </a>
+                        <a href="index.html#contact" class="mobile-link block px-2 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary rounded-lg">
+                            <span class="lang-id">Kontak</span><span class="lang-en">Contact</span>
+                        </a>
+                    </div>
+                    <div class="flex items-center justify-between py-4 border-t border-gray-200/50 dark:border-white/10 mt-2">
+                        <button class="theme-toggle flex items-center gap-2 px-2 text-sm font-medium text-gray-600 dark:text-gray-300" aria-label="Ganti tema / Toggle theme">
+                            <i class="ph ph-moon text-xl dark:hidden"></i><i class="ph ph-sun text-xl hidden dark:block"></i>
+                            <span class="dark:hidden font-semibold">Dark Mode</span><span class="hidden dark:block font-semibold">Light Mode</span>
+                        </button>
+                        <button class="lang-toggle text-sm font-bold text-gray-700 dark:text-gray-200 px-4 py-1.5 bg-gray-200/80 dark:bg-white/10 rounded-full" aria-label="Ganti bahasa / Toggle language">
+                            <span class="lang-id">ID</span><span class="lang-en">EN</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main id="main">
+            <header class="pt-32 pb-16 md:pt-40 md:pb-20 px-4 text-center relative overflow-hidden">
+                <div class="absolute top-10 left-10 w-72 h-72 bg-primary/20 rounded-full filter blur-[96px] pointer-events-none"></div>
+                <div class="absolute bottom-0 right-10 w-72 h-72 bg-purple-500/10 rounded-full filter blur-[96px] pointer-events-none"></div>
+                <div class="max-w-3xl mx-auto relative reveal">
+                    <span class="inline-block px-4 py-1.5 mb-5 text-xs font-semibold tracking-wide bg-primary/10 text-primary dark:bg-white/10 dark:text-blue-300 rounded-full">
+                        <span class="lang-id">Layanan KazuDev</span><span class="lang-en">KazuDev Services</span>
+                    </span>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-5">
+                        <span class="lang-id">Solusi teknologi yang sesuai kebutuhan Anda.</span>
+                        <span class="lang-en">Technology solutions that fit your needs.</span>
+                    </h1>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
+                        <span class="lang-id">Empat kategori layanan yang dikerjakan langsung dengan komunikasi terbuka, fokus pada kebutuhan nyata, dan dukungan dari awal hingga selesai.</span>
+                        <span class="lang-en">Four service categories delivered directly with open communication, a focus on real requirements, and support from start to finish.</span>
+                    </p>
+                </div>
+            </header>
+
+            <section id="web-development" class="py-16 bg-white dark:bg-dark scroll-mt-28">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <article class="grid lg:grid-cols-2 gap-10 items-start reveal">
+                        <div>
+                            <div class="w-14 h-14 bg-blue-50 dark:bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-5">
+                                <i class="ph ph-code text-3xl" aria-hidden="true"></i>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                <span class="lang-id">1. Pengembangan Website</span><span class="lang-en">1. Website Development</span>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
+                                <span class="lang-id">Membangun website yang responsif, mudah digunakan, dan sesuai tujuan bisnis atau kebutuhan personal Anda.</span>
+                                <span class="lang-en">Building responsive, easy-to-use websites that match your business goals or personal needs.</span>
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://api.whatsapp.com/send/?phone=6285163725110&text=Halo%20KazuDev%2C%20saya%20ingin%20konsultasi%20Website%20Development.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white rounded-full font-medium transition-colors">
+                                    <i class="ph ph-whatsapp-logo text-lg" aria-hidden="true"></i>
+                                    <span class="lang-id">Konsultasi</span><span class="lang-en">Consult</span>
+                                </a>
+                                <a href="portfolio.html#projects" class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 hover:border-primary hover:text-primary rounded-full font-medium transition-colors">
+                                    <span class="lang-id">Lihat proyek</span><span class="lang-en">View projects</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-6 md:p-8">
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-4">
+                                <span class="lang-id">Lingkup pekerjaan</span><span class="lang-en">Scope of work</span>
+                            </h3>
+                            <ul class="grid sm:grid-cols-2 gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Website custom sesuai kebutuhan</span><span class="lang-en">Custom website development</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Website bisnis dan perusahaan</span><span class="lang-en">Business and company websites</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Landing page</span><span class="lang-en">Landing pages</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Website portofolio</span><span class="lang-en">Portfolio websites</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Perawatan website</span><span class="lang-en">Website maintenance</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Solusi digital berbasis web</span><span class="lang-en">Web-based digital solutions</span></li>
+                            </ul>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mt-6 mb-3">
+                                <span class="lang-id">Biasa dibutuhkan saat</span><span class="lang-en">Typical use cases</span>
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                <span class="lang-id">Membutuhkan kehadiran online, mempromosikan produk atau layanan, membuat sistem web internal, atau memperbaiki website yang sudah ada.</span>
+                                <span class="lang-en">Establishing an online presence, promoting products or services, creating internal web tools, or improving an existing website.</span>
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="network-infrastructure" class="py-16 bg-gray-50 dark:bg-darker scroll-mt-28">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <article class="grid lg:grid-cols-2 gap-10 items-start reveal">
+                        <div>
+                            <div class="w-14 h-14 bg-blue-50 dark:bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-5">
+                                <i class="ph ph-git-branch text-3xl" aria-hidden="true"></i>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                <span class="lang-id">2. Infrastruktur &amp; Topologi Jaringan</span><span class="lang-en">2. Network Infrastructure &amp; Topology</span>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
+                                <span class="lang-id">Merancang dan menyiapkan jaringan yang rapi dan stabil untuk rumah, kantor, maupun workshop.</span>
+                                <span class="lang-en">Designing and setting up tidy, stable networks for homes, offices, and workshops.</span>
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://api.whatsapp.com/send/?phone=6285163725110&text=Halo%20KazuDev%2C%20saya%20ingin%20konsultasi%20Infrastruktur%20Jaringan.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white rounded-full font-medium transition-colors">
+                                    <i class="ph ph-whatsapp-logo text-lg" aria-hidden="true"></i>
+                                    <span class="lang-id">Konsultasi</span><span class="lang-en">Consult</span>
+                                </a>
+                                <a href="https://netlab.kazudev.my.id" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 hover:border-primary hover:text-primary rounded-full font-medium transition-colors">
+                                    <span class="lang-id">Simulasi jaringan</span><span class="lang-en">Network simulation</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-6 md:p-8">
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-4">
+                                <span class="lang-id">Lingkup pekerjaan</span><span class="lang-en">Scope of work</span>
+                            </h3>
+                            <ul class="grid sm:grid-cols-2 gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Perencanaan jaringan rumah</span><span class="lang-en">Home network planning</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Perencanaan jaringan kantor</span><span class="lang-en">Office network planning</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Perencanaan jaringan workshop</span><span class="lang-en">Workshop network planning</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Desain topologi jaringan</span><span class="lang-en">Network topology design</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Konfigurasi router dan switch</span><span class="lang-en">Router and switch configuration</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Solusi MikroTik &amp; jaringan</span><span class="lang-en">MikroTik and networking solutions</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Implementasi LAN dan wireless</span><span class="lang-en">LAN and wireless implementation</span></li>
+                            </ul>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mt-6 mb-3">
+                                <span class="lang-id">Biasa dibutuhkan saat</span><span class="lang-en">Typical use cases</span>
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                <span class="lang-id">Koneksi perlu stabil untuk banyak perangkat, jaringan kantor baru, penataan ulang workshop, atau kendala koneksi yang berulang.</span>
+                                <span class="lang-en">Stable connectivity for multiple devices, a new office network, workshop restructuring, or recurring connectivity issues.</span>
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="it-support" class="py-16 bg-white dark:bg-dark scroll-mt-28">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <article class="grid lg:grid-cols-2 gap-10 items-start reveal">
+                        <div>
+                            <div class="w-14 h-14 bg-blue-50 dark:bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-5">
+                                <i class="ph ph-headset text-3xl" aria-hidden="true"></i>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                <span class="lang-id">3. IT Support &amp; Bantuan Teknis</span><span class="lang-en">3. IT Support &amp; Technical Assistance</span>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
+                                <span class="lang-id">Bantuan teknis langsung untuk perangkat dan operasional harian Anda, termasuk dukungan freelance untuk kantor.</span>
+                                <span class="lang-en">Hands-on technical help for your devices and daily operations, including freelance support for offices.</span>
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://api.whatsapp.com/send/?phone=6285163725110&text=Halo%20KazuDev%2C%20saya%20ingin%20konsultasi%20IT%20Support.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white rounded-full font-medium transition-colors">
+                                    <i class="ph ph-whatsapp-logo text-lg" aria-hidden="true"></i>
+                                    <span class="lang-id">Konsultasi</span><span class="lang-en">Consult</span>
+                                </a>
+                                <a href="index.html#contact" class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 hover:border-primary hover:text-primary rounded-full font-medium transition-colors">
+                                    <span class="lang-id">Kontak lain</span><span class="lang-en">Other contacts</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-6 md:p-8">
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-4">
+                                <span class="lang-id">Lingkup pekerjaan</span><span class="lang-en">Scope of work</span>
+                            </h3>
+                            <ul class="grid sm:grid-cols-2 gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">IT support freelance untuk kantor</span><span class="lang-en">Freelance IT support for offices</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Troubleshooting komputer &amp; laptop</span><span class="lang-en">Computer and laptop troubleshooting</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Perawatan infrastruktur IT dasar</span><span class="lang-en">Basic IT infrastructure maintenance</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Bantuan teknis operasional bisnis</span><span class="lang-en">Technical assistance for business operations</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Troubleshooting hardware &amp; software</span><span class="lang-en">Hardware and software troubleshooting</span></li>
+                            </ul>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mt-6 mb-3">
+                                <span class="lang-id">Biasa dibutuhkan saat</span><span class="lang-en">Typical use cases</span>
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                <span class="lang-id">Perangkat bermasalah, tim butuh bantuan teknis tanpa staf tetap, atau infrastruktur dasar perlu diperiksa dan dirawat.</span>
+                                <span class="lang-en">Faulty devices, a team needing technical help without permanent staff, or basic infrastructure requiring inspection and upkeep.</span>
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="laptop-service" class="py-16 bg-gray-50 dark:bg-darker scroll-mt-28">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <article class="grid lg:grid-cols-2 gap-10 items-start reveal">
+                        <div>
+                            <div class="w-14 h-14 bg-blue-50 dark:bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-5">
+                                <i class="ph ph-laptop text-3xl" aria-hidden="true"></i>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                <span class="lang-id">4. Layanan Laptop &amp; Hardware</span><span class="lang-en">4. Laptop Service &amp; Hardware Assistance</span>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
+                                <span class="lang-id">Bantuan perawatan laptop, instalasi perangkat lunak, pemeriksaan hardware, dan pencarian spare part yang kompatibel.</span>
+                                <span class="lang-en">Laptop care, software installation, hardware inspection, and help finding compatible spare parts.</span>
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://api.whatsapp.com/send/?phone=6285163725110&text=Halo%20KazuDev%2C%20saya%20ingin%20konsultasi%20Layanan%20Laptop%20dan%20Hardware.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white rounded-full font-medium transition-colors">
+                                    <i class="ph ph-whatsapp-logo text-lg" aria-hidden="true"></i>
+                                    <span class="lang-id">Konsultasi</span><span class="lang-en">Consult</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-6 md:p-8">
+                            <h3 class="font-semibold text-gray-900 dark:text-white mb-4">
+                                <span class="lang-id">Lingkup pekerjaan</span><span class="lang-en">Scope of work</span>
+                            </h3>
+                            <ul class="grid sm:grid-cols-2 gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Instalasi sistem operasi laptop</span><span class="lang-en">Laptop operating system installation</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Troubleshooting laptop</span><span class="lang-en">Laptop troubleshooting</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Instalasi perangkat lunak</span><span class="lang-en">Software installation</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Pemeriksaan hardware</span><span class="lang-en">Hardware inspection</span></li>
+                                <li class="flex gap-2"><i class="ph ph-check-circle text-primary shrink-0 mt-0.5" aria-hidden="true"></i><span class="lang-id">Bantuan cari spare part ponsel yang kompatibel</span><span class="lang-en">Help finding compatible mobile phone spare parts</span></li>
+                            </ul>
+                            <h3 class="font-semibold text-gray-900 dark:text-white mt-6 mb-3">
+                                <span class="lang-id">Biasa dibutuhkan saat</span><span class="lang-en">Typical use cases</span>
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                <span class="lang-id">Laptop lepas atau bermasalah, butuh software tertentu, hardware perlu dicek, atau kesulitan mencari komponen ponsel yang sesuai.</span>
+                                <span class="lang-en">A slow or faulty laptop, required software, hardware checks, or difficulty finding the right phone component.</span>
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="py-20 bg-white dark:bg-dark">
+                <div class="max-w-4xl mx-auto px-4 text-center reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        <span class="lang-id">Mari diskusi kebutuhan Anda.</span><span class="lang-en">Let's discuss your needs.</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                        <span class="lang-id">Ceritakan masalah atau rencana Anda. KazuDev akan membantu menentukan layanan yang paling sesuai.</span>
+                        <span class="lang-en">Tell us about your issue or plan. KazuDev will help determine the most suitable service.</span>
+                    </p>
+                    <a href="https://api.whatsapp.com/send/?phone=6285163725110&text=Halo%20KazuDev%2C%20saya%20ingin%20konsultasi%20layanan.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-blue-600 text-white rounded-full font-semibold transition-colors">
+                        <i class="ph ph-whatsapp-logo text-xl" aria-hidden="true"></i>
+                        <span class="lang-id">Hubungi via WhatsApp</span><span class="lang-en">Contact via WhatsApp</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-white dark:bg-dark border-t border-gray-200 dark:border-gray-800 py-8">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 dark:text-gray-400 text-sm text-center md:text-left">
+                    &copy; <span id="year"></span> KazuDev.
+                    <span class="lang-id">Dibuat dengan</span><span class="lang-en">Made with</span>
+                    <i class="ph-fill ph-heart text-red-500"></i>
+                    <span class="lang-id">oleh</span><span class="lang-en">by</span> Nouva Prasetya Ardhana.
+                </p>
+                <nav class="flex flex-wrap justify-center gap-4 text-sm text-gray-500" aria-label="Tautan kaki">
+                    <a href="index.html" class="hover:text-primary">
+                        <span class="lang-id">Beranda</span><span class="lang-en">Home</span>
+                    </a>
+                    <a href="portfolio.html" class="hover:text-primary">
+                        <span class="lang-id">Portofolio</span><span class="lang-en">Portfolio</span>
+                    </a>
+                    <a href="https://toko.kazudev.my.id" target="_blank" rel="noopener noreferrer" class="hover:text-primary">
+                        <span class="lang-id">Toko</span><span class="lang-en">Store</span>
+                    </a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        document.querySelectorAll('.theme-toggle').forEach(btn => btn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
+        }));
+
+        document.querySelectorAll('.lang-toggle').forEach(btn => btn.addEventListener('click', () => {
+            const isEn = document.documentElement.classList.toggle('en-mode');
+            document.documentElement.lang = isEn ? 'en' : 'id';
+            localStorage.lang = isEn ? 'en' : 'id';
+        }));
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('nav-scrolled', window.scrollY > 50));
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        const navWrapper = document.getElementById('nav-wrapper');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            mobileDropdown.classList.toggle('max-h-0', !isMenuOpen);
+            mobileDropdown.classList.toggle('opacity-0', !isMenuOpen);
+            mobileDropdown.classList.toggle('pb-0', !isMenuOpen);
+            mobileDropdown.classList.toggle('max-h-[400px]', isMenuOpen);
+            mobileDropdown.classList.toggle('opacity-100', isMenuOpen);
+            mobileDropdown.classList.toggle('pb-2', isMenuOpen);
+            navWrapper.classList.toggle('rounded-full', !isMenuOpen);
+            navWrapper.classList.toggle('rounded-3xl', isMenuOpen);
+            menuIcon.classList.toggle('ph-list', !isMenuOpen);
+            menuIcon.classList.toggle('ph-x', isMenuOpen);
+            mobileMenuBtn.setAttribute('aria-expanded', String(isMenuOpen));
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => {
+            if (isMenuOpen) toggleMenu();
+        }));
+
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
